@@ -1,0 +1,546 @@
+{
+  "app": {
+    "name": "Accounting Management System",
+    "shortName": "AMS",
+    "mockBadge": "Demo data",
+    "loading": "Loading…"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "retry": "Try again",
+    "reload": "Reload",
+    "search": "Search",
+    "all": "All",
+    "none": "None",
+    "actions": "Actions",
+    "back": "Back",
+    "add": "Add",
+    "remove": "Remove",
+    "clear": "Clear",
+    "total": "Total",
+    "optional": "optional",
+    "required": "required",
+    "export": "Export",
+    "print": "Print",
+    "view": "View",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "roles": {
+    "SYSADMIN": "System Administrator",
+    "OWNER": "Business Owner",
+    "FINMGR": "Finance Manager",
+    "ACCT": "Accountant",
+    "APO": "Accounts Payable Officer",
+    "ARO": "Accounts Receivable Officer",
+    "CASHIER": "Cashier",
+    "AUDITOR": "Auditor",
+    "DEPTMGR": "Department Manager",
+    "READONLY": "Read-only User"
+  },
+  "nav": {
+    "mainNavigation": "Main navigation",
+    "home": "Home",
+    "breadcrumbs": "Breadcrumbs",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "openMenu": "Open menu",
+    "limited": "Limited access",
+    "groups": {
+      "dashboard": "Dashboard",
+      "accounting": "Accounting",
+      "sales": "Sales and Receivables",
+      "purchases": "Purchases and Payables",
+      "cashBank": "Cash and Bank",
+      "expenses": "Expenses",
+      "fixedAssets": "Fixed Assets",
+      "inventory": "Inventory Integration",
+      "budgets": "Budgets",
+      "reports": "Financial Reports",
+      "tax": "Tax",
+      "approvals": "Approvals",
+      "auditTrail": "Audit Trail",
+      "admin": "User Management",
+      "settings": "System Settings"
+    },
+    "items": {
+      "dashboard": "Dashboard",
+      "accounts": "Chart of Accounts",
+      "journals": "Journal Entries",
+      "generalLedger": "General Ledger",
+      "trialBalance": "Trial Balance",
+      "periods": "Accounting Periods",
+      "fxRates": "Exchange Rates",
+      "fxRevaluations": "FX Revaluation",
+      "customers": "Customers",
+      "customerInvoices": "Customer Invoices",
+      "receipts": "Receipts",
+      "creditNotes": "Credit Notes",
+      "arAging": "Receivables Aging",
+      "suppliers": "Suppliers",
+      "supplierInvoices": "Supplier Invoices",
+      "payments": "Payments",
+      "apAging": "Payables Aging",
+      "cashBankAccounts": "Cash and Bank Accounts",
+      "cashBankTransactions": "Cash and Bank Transactions",
+      "reconciliations": "Bank Reconciliation",
+      "expenses": "Expenses",
+      "assetRegister": "Fixed Asset Register",
+      "depreciationRuns": "Depreciation Runs",
+      "inventory": "Inventory Integration",
+      "budgets": "Budgets",
+      "reports": "Financial Reports",
+      "taxCodes": "Tax Codes",
+      "approvals": "Approvals Inbox",
+      "auditTrail": "Audit Trail",
+      "users": "Users",
+      "roles": "Roles and Permissions",
+      "settingsCompany": "Company",
+      "settingsBranches": "Branches",
+      "settingsDepartments": "Departments",
+      "settingsFiscalYears": "Fiscal Years",
+      "settingsCurrencies": "Currencies",
+      "settingsNumbering": "Document Numbering",
+      "settingsApprovalRules": "Approval Rules",
+      "settingsNotifications": "Notifications",
+      "settingsStatementMapping": "Statement Mapping",
+      "settingsTemplates": "Document Templates",
+      "settingsDimensions": "Dimensions",
+      "settingsBackupStatus": "Backup Status",
+      "imports": "Data Import",
+      "profile": "My Profile",
+      "forbidden": "Access denied",
+      "dev": "Component gallery"
+    }
+  },
+  "shell": {
+    "skipToContent": "Skip to main content",
+    "company": "Company",
+    "branch": "Branch",
+    "allBranches": "All branches",
+    "search": {
+      "open": "Search",
+      "placeholder": "Search accounts, customers, suppliers or document numbers…",
+      "hint": "Type at least 2 characters",
+      "empty": "No results found",
+      "searching": "Searching…",
+      "failed": "Search is unavailable right now",
+      "types": {
+        "account": "Accounts",
+        "customer": "Customers",
+        "supplier": "Suppliers",
+        "document": "Documents"
+      }
+    },
+    "language": {
+      "label": "Language",
+      "en": "English",
+      "km": "ខ្មែរ"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "open": "Notifications, {count} unread",
+      "empty": "You have no notifications",
+      "markAllRead": "Mark all as read",
+      "failed": "Notifications could not be loaded"
+    },
+    "userMenu": {
+      "open": "User menu",
+      "profile": "Profile",
+      "numberFormat": "Negative numbers",
+      "negativeBrackets": "In brackets (1,250.00)",
+      "negativeMinus": "With a minus sign -1,250.00",
+      "dateFormat": "Date format",
+      "theme": "Appearance",
+      "light": "Light",
+      "dark": "Dark",
+      "changePassword": "Change password",
+      "mfa": "Two-step verification",
+      "signOut": "Sign out",
+      "chaos": "Inject random errors (demo)"
+    },
+    "idle": {
+      "title": "Are you still there?",
+      "body": "For your security you will be signed out in {seconds} seconds because of inactivity.",
+      "stay": "Stay signed in",
+      "signOut": "Sign out now"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Use your work account to continue",
+      "username": "Email or username",
+      "password": "Password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "submit": "Sign in",
+      "forgot": "Forgot password?",
+      "usernameRequired": "Enter your email or username",
+      "passwordRequired": "Enter your password",
+      "lockedUntil": "Account locked until {time}",
+      "sessionIdle": "You were signed out because of inactivity.",
+      "sessionExpired": "Your session has ended. Sign in again."
+    },
+    "mfa": {
+      "title": "Verification code",
+      "subtitle": "Enter the 6-digit code from your authenticator app",
+      "code": "Verification code",
+      "submit": "Verify",
+      "back": "Back to sign in",
+      "required": "Enter the 6-digit code",
+      "demoHint": "Demo code: {code}"
+    },
+    "demo": {
+      "title": "Sign in as…",
+      "hint": "Demo accounts, one per role. Available in mock mode only.",
+      "mfaTag": "MFA"
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "subtitle": "Enter your email and we will send a reset link that is valid for 30 minutes.",
+      "email": "Email",
+      "emailInvalid": "Enter a valid email address",
+      "submit": "Send reset link",
+      "sent": "If an account exists for this email, a reset link has been sent.",
+      "backToLogin": "Back to sign in"
+    },
+    "reset": {
+      "title": "Choose a new password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "policy": "Password must be at least 12 characters",
+      "mismatch": "The two passwords do not match",
+      "missingToken": "This reset link is incomplete. Request a new one.",
+      "submit": "Set new password",
+      "done": "Your password has been changed. Sign in with the new password."
+    }
+  },
+  "status": {
+    "DRAFT": "Draft",
+    "SUBMITTED": "Submitted",
+    "APPROVED": "Approved",
+    "REJECTED": "Rejected",
+    "POSTED": "Posted",
+    "REVERSED": "Reversed",
+    "CANCELLED": "Cancelled",
+    "OPEN": "Open",
+    "PARTIALLY_PAID": "Partially Paid",
+    "PAID": "Paid",
+    "OVERDUE": "Overdue",
+    "CREDITED": "Credited",
+    "IN_PROGRESS": "In progress",
+    "COMPLETED": "Completed",
+    "SOFT_CLOSED": "Soft-closed",
+    "CLOSED": "Closed",
+    "REOPENED": "Reopened",
+    "VERIFIED": "Verified",
+    "UNVERIFIED": "Unverified",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "PENDING": "Pending"
+  },
+  "errors": {
+    "MALFORMED_REQUEST": "The request could not be understood. Reload the page and try again.",
+    "NOT_AUTHENTICATED": "Sign in to continue.",
+    "SESSION_EXPIRED": "Your session has expired. Sign in again.",
+    "FORBIDDEN": "You do not have permission to do this.",
+    "APPROVAL_LIMIT_EXCEEDED": "The amount exceeds your approval limit.",
+    "SOD_VIOLATION": "You prepared this record and cannot approve or post it yourself.",
+    "NOT_FOUND": "The record was not found, or you do not have access to it.",
+    "VERSION_CONFLICT": "This record was changed by someone else — reload",
+    "ALREADY_POSTED": "This record has already been posted.",
+    "INVALID_STATE_TRANSITION": "This action is not allowed in the record's current status.",
+    "PERIOD_CLOSED": "The posting date is in a closed period.",
+    "DUPLICATE_SUPPLIER_INVOICE": "An invoice with this number already exists for this supplier.",
+    "RECONCILIATION_COMPLETED": "This reconciliation is completed and locked.",
+    "IDEMPOTENCY_KEY_REUSED": "This action was already submitted with different details. Reload and try again.",
+    "DUPLICATE_CODE": "This code already exists.",
+    "VALIDATION_ERROR": "Some fields need your attention.",
+    "JOURNAL_UNBALANCED": "Debits and credits are not equal.",
+    "ACCOUNT_NOT_POSTABLE": "A header or inactive account cannot be posted to.",
+    "RATE_MISSING": "An exchange rate is required for this currency and date.",
+    "ALLOCATION_EXCEEDS_BALANCE": "The allocation exceeds the available balance.",
+    "TAX_CODE_UNVERIFIED": "The tax code is unverified and cannot be used for posting.",
+    "DIFFERENCE_UNRESOLVED": "The difference must be resolved or explained before completion.",
+    "UNMAPPED_ACCOUNTS": "Some accounts are not mapped to a statement line.",
+    "RATE_LIMITED": "Too many requests. Wait a moment and try again.",
+    "INTERNAL_ERROR": "The server had a problem. Try again; if it continues, contact support with the reference below.",
+    "SERVICE_UNAVAILABLE": "The service is temporarily unavailable. Try again shortly.",
+    "INVALID_CREDENTIALS": "Incorrect sign-in details",
+    "LOCKED": "Your account is temporarily locked.",
+    "MFA_REQUIRED": "A verification code is required.",
+    "INVALID_OTP": "Invalid verification code",
+    "INVALID_TOKEN": "This link is invalid or has expired.",
+    "NETWORK_ERROR": "Cannot reach the server. Check your connection and try again.",
+    "UNKNOWN_ERROR": "Something unexpected happened. Try again.",
+    "reference": "Reference: {id}",
+    "retryAfter": "Try again in {seconds} seconds."
+  },
+  "finance": {
+    "amount": {
+      "invalid": "Enter a valid amount"
+    },
+    "account": {
+      "placeholder": "Select account",
+      "search": "Search by code or name…",
+      "empty": "No posting account matches",
+      "loading": "Loading accounts…",
+      "failed": "Accounts could not be loaded",
+      "DEBIT": "Debit",
+      "CREDIT": "Credit",
+      "types": {
+        "ASSET": "Asset",
+        "LIABILITY": "Liability",
+        "EQUITY": "Equity",
+        "REVENUE": "Revenue",
+        "EXPENSE": "Expense"
+      }
+    },
+    "currency": {
+      "label": "Currency"
+    },
+    "rate": {
+      "label": "Exchange rate",
+      "baseCurrency": "Base currency — no rate needed",
+      "direct": "{base} per 1 {currency}",
+      "inverse": "{currency} per 1 {base}",
+      "equivalent": "1 {base} = {inverse} {currency}",
+      "switch": "Switch rate direction",
+      "invalid": "Rate must be greater than zero"
+    },
+    "dimension": {
+      "none": "None",
+      "branch": "Branch",
+      "department": "Department",
+      "select": "Select {name}"
+    },
+    "period": {
+      "placeholder": "Select period",
+      "locked": "Closed period",
+      "label": "Accounting period"
+    },
+    "dateRange": {
+      "from": "From",
+      "to": "To",
+      "invalid": "The start date must be on or before the end date",
+      "closedHint": "Includes a closed period",
+      "presets": "Quick ranges",
+      "thisPeriod": "This period",
+      "lastPeriod": "Last period",
+      "yearToDate": "Year to date"
+    },
+    "totals": {
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "tax": "Tax",
+      "total": "Total",
+      "baseEquivalent": "Base currency equivalent",
+      "preview": "Preview only. The server calculates the final amounts."
+    },
+    "journal": {
+      "caption": "Journal lines",
+      "line": "#",
+      "account": "Account",
+      "description": "Description",
+      "debit": "Debit",
+      "credit": "Credit",
+      "currency": "Currency",
+      "rate": "Rate",
+      "branch": "Branch",
+      "department": "Department",
+      "addLine": "Add line",
+      "removeLine": "Remove line {line}",
+      "totals": "Totals ({currency})",
+      "balanced": "Balanced",
+      "differ": "Debits and credits differ by {amount}",
+      "needTwoLines": "Enter at least two lines",
+      "shortcuts": "Enter: next row · Ctrl+Enter: add line · Ctrl+Delete: remove line",
+      "lineField": "{field}, line {line}",
+      "issues": {
+        "both_sides": "Enter a debit or a credit, not both",
+        "no_account": "Select an account",
+        "missing_rate": "Exchange rate required"
+      }
+    },
+    "allocation": {
+      "caption": "Open invoices",
+      "invoice": "Invoice no",
+      "date": "Date",
+      "dueDate": "Due date",
+      "currency": "Currency",
+      "outstanding": "Outstanding",
+      "allocate": "Allocate amount",
+      "allocateFor": "Allocate amount for {invoice}",
+      "autoAllocate": "Auto-allocate (oldest first)",
+      "clear": "Clear allocations",
+      "receiptAmount": "Receipt amount",
+      "allocated": "Allocated",
+      "unallocated": "Unallocated",
+      "unappliedWarning": "{amount} is not allocated and will remain as an unapplied receipt.",
+      "exceedsReceipt": "Allocated amount exceeds receipt amount",
+      "exceedsInvoice": "Allocation exceeds invoice outstanding balance",
+      "fxPreview": "Realised FX (preview)",
+      "fxGain": "gain",
+      "fxLoss": "loss",
+      "empty": "This customer has no open invoices"
+    },
+    "words": {
+      "label": "Amount in words"
+    }
+  },
+  "workflow": {
+    "confirm": {
+      "company": "Company",
+      "period": "Period",
+      "date": "Date",
+      "debitTotal": "Total debit",
+      "creditTotal": "Total credit",
+      "amount": "Amount",
+      "accounts": "Accounts affected",
+      "amountInWords": "Amount in words",
+      "reason": "Reason",
+      "reasonPlaceholder": "Explain why this action is needed",
+      "reasonRequired": "A reason is required",
+      "iConfirm": "I confirm this action",
+      "irreversible": "Posted entries cannot be edited. Corrections are made by reversal.",
+      "processing": "Processing…",
+      "alreadyDone": "Already completed: {result}",
+      "success": "Done: {result}"
+    },
+    "actions": {
+      "post": "Post",
+      "reverse": "Reverse",
+      "approve": "Approve",
+      "reject": "Reject",
+      "release": "Release payment",
+      "writeOff": "Write off",
+      "complete": "Complete reconciliation",
+      "closePeriod": "Close period",
+      "reopenPeriod": "Reopen period",
+      "yearEndClose": "Year-end close",
+      "changeSetting": "Change setting"
+    },
+    "reason": {
+      "title": "Give a reason",
+      "submit": "Submit"
+    },
+    "sod": {
+      "ok": "Separation of duties: OK",
+      "violation": "You prepared this record and cannot approve it",
+      "reduced": "Reduced separation of duties: this action will be listed for owner review",
+      "preparedBy": "Prepared by {name}"
+    },
+    "timeline": {
+      "title": "Approval path",
+      "step": "Step {step}",
+      "empty": "No approval is required",
+      "PENDING": "Pending",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "SKIPPED": "Skipped"
+    },
+    "history": {
+      "title": "History",
+      "empty": "No history yet"
+    },
+    "conflict": {
+      "title": "Record changed",
+      "reload": "Reload"
+    }
+  },
+  "feedback": {
+    "empty": {
+      "title": "Nothing here yet"
+    },
+    "error": {
+      "title": "Something went wrong"
+    },
+    "comingSoon": {
+      "title": "{screen} is not built yet",
+      "body": "This screen is delivered in Phase {phase} of the build plan.",
+      "scr": "Specification: {scr}",
+      "back": "Go to dashboard"
+    },
+    "forbidden": {
+      "title": "You do not have access to this page",
+      "body": "Your role does not include this area. If you need access, ask your System Administrator.",
+      "back": "Go to my home page"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "body": "The page you are looking for does not exist."
+    },
+    "unsaved": {
+      "title": "Leave without saving?",
+      "body": "You have unsaved changes. If you leave this page, they will be lost.",
+      "stay": "Stay on page",
+      "leave": "Leave page"
+    },
+    "posted": "POSTED"
+  },
+  "data": {
+    "table": {
+      "noResults": "No records match your filters",
+      "loadMore": "Load more",
+      "loading": "Loading…",
+      "shown": "{shown} of {total} shown",
+      "shownNoTotal": "{shown} shown",
+      "columns": "Columns",
+      "sortBy": "Sort by {column}",
+      "openRow": "Open record"
+    },
+    "filters": {
+      "search": "Search",
+      "clear": "Clear filters"
+    },
+    "export": {
+      "label": "Export",
+      "pdf": "PDF",
+      "xlsx": "Excel",
+      "csv": "CSV"
+    }
+  },
+  "files": {
+    "attachments": {
+      "title": "Attachments",
+      "empty": "No attachments",
+      "drop": "Drag and drop files here, or",
+      "browse": "browse",
+      "hint": "PDF or images, up to {size} MB each",
+      "tooLarge": "{name} is larger than {size} MB",
+      "badType": "{name} is not a supported file type",
+      "remove": "Remove {name}",
+      "preview": "Preview {name}"
+    },
+    "pdf": {
+      "title": "Document preview",
+      "draft": "DRAFT",
+      "unavailable": "Preview is not available"
+    }
+  },
+  "report": {
+    "basis": "Basis",
+    "accrual": "Accrual",
+    "period": "Period",
+    "currency": "Currency",
+    "branch": "Branch",
+    "generatedAt": "Generated",
+    "generatedBy": "Generated by",
+    "includesUnposted": "Includes unposted transactions"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}",
+    "signedInAs": "Signed in as {role}",
+    "phaseNote": "Financial KPIs, charts and approval widgets are delivered in Phase 5. The foundation is ready: sign-in, roles, navigation, language and the reusable finance components.",
+    "company": "Company",
+    "baseCurrency": "Base currency",
+    "businessDate": "Business date",
+    "yourAccess": "Your menu access",
+    "openPeriods": "Accounting periods {year}"
+  }
+}

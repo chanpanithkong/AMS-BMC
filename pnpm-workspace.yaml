@@ -1,6 +1,7 @@
 allowBuilds:
-  '@parcel/watcher': set this to true or false
-  '@swc/core': set this to true or false
+  '@parcel/watcher': false
+  '@swc/core': false
+  msw: false
 minimumReleaseAgeExclude:
   - '@next/env@16.4.6'
   - '@next/eslint-plugin-next@16.4.6'
