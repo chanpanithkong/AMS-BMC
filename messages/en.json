@@ -27,7 +27,54 @@
     "print": "Print",
     "view": "View",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "edit": "Edit",
+    "delete": "Delete",
+    "run": "Run",
+    "new": "New",
+    "details": "Details",
+    "yesNo": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "saved": "Saved",
+    "comment": "Comment",
+    "from": "From",
+    "to": "To",
+    "history": {
+      "CREATED": "Created",
+      "EDITED": "Edited",
+      "SUBMITTED": "Submitted",
+      "RECALLED": "Recalled",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "POSTED": "Posted",
+      "CANCELLED": "Cancelled",
+      "SETTLED": "Paid",
+      "ATTACHMENT_ADDED": "Attachment added",
+      "ATTACHMENT_REMOVED": "Attachment removed",
+      "STARTED": "Started",
+      "MATCHED": "Lines matched",
+      "UNMATCHED": "Match removed",
+      "AUTO_MATCHED": "Auto-matched",
+      "ADJUSTED": "Adjustment posted",
+      "COMPLETED": "Completed",
+      "REOPENED": "Reopened",
+      "RELEASED": "Released",
+      "CREDITED": "Credit note posted",
+      "ALLOCATED": "Allocated",
+      "RATE_ADDED": "Rate added",
+      "VERIFIED": "Verified",
+      "ACTIVATED": "Activated",
+      "TRANSFERRED": "Transferred",
+      "DISPOSAL_REQUESTED": "Disposal requested",
+      "DISPOSAL_REJECTED": "Disposal rejected",
+      "DISPOSED": "Disposed",
+      "SUPERSEDED": "Superseded",
+      "IMPORTED": "Lines imported"
+    },
+    "selectAll": "Select all",
+    "next": "Next"
   },
   "roles": {
     "SYSADMIN": "System Administrator",
@@ -241,7 +288,16 @@
     "UNVERIFIED": "Unverified",
     "ACTIVE": "Active",
     "INACTIVE": "Inactive",
-    "PENDING": "Pending"
+    "PENDING": "Pending",
+    "BLOCKED": "Blocked",
+    "FULLY_DEPRECIATED": "Fully depreciated",
+    "DISPOSAL_PENDING": "Disposal pending",
+    "DISPOSED": "Disposed",
+    "SUPERSEDED": "Superseded",
+    "FAILED": "Failed",
+    "VALIDATED": "Validated",
+    "COMMITTED": "Imported",
+    "ROLLED_BACK": "Rolled back"
   },
   "errors": {
     "MALFORMED_REQUEST": "The request could not be understood. Reload the page and try again.",
@@ -278,7 +334,15 @@
     "NETWORK_ERROR": "Cannot reach the server. Check your connection and try again.",
     "UNKNOWN_ERROR": "Something unexpected happened. Try again.",
     "reference": "Reference: {id}",
-    "retryAfter": "Try again in {seconds} seconds."
+    "retryAfter": "Try again in {seconds} seconds.",
+    "JOURNAL_POSTED": "Posted journals cannot be edited. Correct them with a reversal.",
+    "ACCOUNT_IN_USE": "This account has transactions and cannot be deleted",
+    "DUPLICATE_RECORD": "A record with these details already exists.",
+    "ATTACHMENT_REQUIRED": "Attach the receipt or invoice before submitting.",
+    "INSUFFICIENT_BALANCE": "Insufficient cash balance",
+    "PAYMENT_NOT_APPROVED": "Payment must be approved before release.",
+    "ALREADY_RELEASED": "This payment has already been released.",
+    "SUPPLIER_NOT_VERIFIED": "The supplier or its bank details are not verified, so it cannot be paid."
   },
   "finance": {
     "amount": {
@@ -422,7 +486,8 @@
       "closePeriod": "Close period",
       "reopenPeriod": "Reopen period",
       "yearEndClose": "Year-end close",
-      "changeSetting": "Change setting"
+      "changeSetting": "Change setting",
+      "reopen": "Reopen"
     },
     "reason": {
       "title": "Give a reason",
@@ -536,11 +601,2004 @@
     "title": "Dashboard",
     "welcome": "Welcome, {name}",
     "signedInAs": "Signed in as {role}",
-    "phaseNote": "Financial KPIs, charts and approval widgets are delivered in Phase 5. The foundation is ready: sign-in, roles, navigation, language and the reusable finance components.",
     "company": "Company",
     "baseCurrency": "Base currency",
     "businessDate": "Business date",
     "yourAccess": "Your menu access",
-    "openPeriods": "Accounting periods {year}"
+    "openPeriods": "Accounting periods {year}",
+    "filters": "Dashboard filters",
+    "period": "Period",
+    "branch": "Branch",
+    "allBranches": "All branches",
+    "presets": {
+      "month": "This month",
+      "last_month": "Last month",
+      "quarter": "Quarter to date",
+      "year": "Year to date"
+    },
+    "postedOnly": "Posted transactions only",
+    "kpis": "Key figures",
+    "kpi": {
+      "revenue": "Revenue",
+      "expenses": "Expenses",
+      "net_profit": "Net profit",
+      "cash": "Cash",
+      "bank": "Bank",
+      "ar": "Receivables",
+      "ap": "Payables",
+      "overdue_ar": "Overdue receivables",
+      "upcoming_ap": "Payables due in {days} days"
+    },
+    "atDate": "at {date}",
+    "trend": "Revenue, expenses and profit — last 12 months",
+    "trendLabel": "Chart of monthly revenue, expenses and profit for the last 12 months. Use Show table for the figures.",
+    "showTable": "Show table",
+    "showChart": "Show chart",
+    "month": "Month",
+    "cash": "Cash and bank balances",
+    "noAccounts": "No accounts to show",
+    "reconciliations": "Bank reconciliation status",
+    "lastReconciled": "Reconciled to {date}",
+    "neverReconciled": "Never reconciled",
+    "unreconciled": "{count, plural, =0 {nothing outstanding} one {# item to reconcile} other {# items to reconcile}}",
+    "pending": {
+      "title": "Pending",
+      "badge": "Includes pending",
+      "approvals": "Waiting for my approval",
+      "none": "No approved documents waiting to be posted",
+      "note": "Approved but unposted amounts are not included in the figures above.",
+      "types": {
+        "JOURNAL": "{count, plural, one {# approved journal} other {# approved journals}}",
+        "EXPENSE": "{count, plural, one {# approved expense} other {# approved expenses}}",
+        "AR_INVOICE": "{count, plural, one {# approved customer invoice} other {# approved customer invoices}}",
+        "AP_INVOICE": "{count, plural, one {# approved supplier invoice} other {# approved supplier invoices}}",
+        "SUPPLIER_PAYMENT": "{count, plural, one {# payment to release} other {# payments to release}}"
+      }
+    },
+    "budget": {
+      "title": "Budget use",
+      "none": "No approved budget yet. Budgets are set up in Phase 6."
+    },
+    "recent": {
+      "title": "Recent posted transactions",
+      "empty": "No posted transactions in this period",
+      "date": "Date",
+      "number": "Number",
+      "type": "Type",
+      "description": "Description",
+      "amount": "Amount",
+      "status": "Status",
+      "types": {
+        "AR_INVOICE": "Customer invoice",
+        "AP_INVOICE": "Supplier invoice",
+        "AR_RECEIPT": "Receipt",
+        "AP_PAYMENT": "Supplier payment",
+        "AR_CREDIT_NOTE": "Credit note",
+        "CB_PAYMENT": "Payment voucher",
+        "CB_RECEIPT": "Cash receipt",
+        "CB_TRANSFER": "Transfer",
+        "CB_ADJUSTMENT": "Bank adjustment",
+        "EXPENSE": "Expense",
+        "YEAR_END": "Year-end close",
+        "MANUAL": "Manual journal",
+        "ADJUSTING": "Adjusting journal",
+        "SYSTEM": "System journal",
+        "OPENING": "Opening balance",
+        "REVERSAL": "Reversal"
+      }
+    }
+  },
+  "gl": {
+    "type": {
+      "MANUAL": "Manual",
+      "ADJUSTING": "Adjusting",
+      "SYSTEM": "System",
+      "REVERSAL": "Reversal",
+      "OPENING": "Opening balance"
+    },
+    "accounts": {
+      "title": "Chart of Accounts",
+      "description": "Accounts, hierarchy and statement mapping. Header accounts group posting accounts and cannot be posted to.",
+      "new": "New account",
+      "import": "Import",
+      "view": {
+        "label": "View",
+        "tree": "Tree",
+        "table": "Table"
+      },
+      "searchPlaceholder": "Code or name",
+      "filters": {
+        "type": "Type",
+        "posting": "Posting or header",
+        "postingOnly": "Posting accounts",
+        "headerOnly": "Header accounts",
+        "status": "Status",
+        "control": "Control accounts only"
+      },
+      "col": {
+        "code": "Code",
+        "name": "Name",
+        "type": "Type",
+        "category": "Category",
+        "normal": "Normal balance",
+        "posting": "Posting",
+        "control": "Control",
+        "active": "Active",
+        "balance": "Balance ({currency})"
+      },
+      "header": "Header",
+      "sensitive": "Sensitive",
+      "empty": "Import a chart or create your first account",
+      "noMatch": "No account matches your filters",
+      "expandAll": "Expand all",
+      "collapseAll": "Collapse all",
+      "toggle": "Show or hide accounts under {code}",
+      "form": {
+        "createTitle": "New account",
+        "editTitle": "Account {code}",
+        "code": "Code",
+        "codeHint": "Four digits; the first digit follows the type (1 or 9 asset, 2 liability, 3 equity, 4 or 7 revenue, 5, 6 or 8 expense).",
+        "nameEn": "Name (English)",
+        "nameKm": "Name (Khmer)",
+        "description": "Description",
+        "type": "Type",
+        "category": "Category",
+        "parent": "Parent (header account)",
+        "noParent": "None (top level)",
+        "normal": "Normal balance",
+        "posting": "Posting account",
+        "postingHint": "Untick for a header account that only groups others.",
+        "control": "Control account",
+        "controlModule": "Controlled by",
+        "controlHint": "Posted only by its module; manual journals need an override (BR-COA-002).",
+        "sensitive": "Sensitive (hidden from roles without access)",
+        "currency": "Currency restriction",
+        "anyCurrency": "Any currency",
+        "cashFlow": "Cash-flow class",
+        "mapping": "Statement mapping",
+        "mappingHint": "Statement line, e.g. BS.CURRENT_ASSETS.CASH",
+        "effectiveFrom": "Effective from",
+        "effectiveTo": "Effective to",
+        "save": "Save account",
+        "created": "Account {code} created",
+        "updated": "Account {code} saved",
+        "pendingSent": "The change was sent for approval because the account has transactions",
+        "inUseNote": "This account has transactions. Changes to its type, balance side, hierarchy or control need approval.",
+        "required": "This field is required"
+      },
+      "cashFlowClass": {
+        "none": "None",
+        "CASH": "Cash",
+        "OPERATING": "Operating",
+        "INVESTING": "Investing",
+        "FINANCING": "Financing"
+      },
+      "controlModule": {
+        "AR": "Receivables",
+        "AP": "Payables",
+        "BANK": "Bank",
+        "FIXED_ASSETS": "Fixed assets",
+        "INVENTORY": "Inventory",
+        "TAX": "Tax"
+      },
+      "pending": {
+        "title": "Change waiting for approval",
+        "body": "{name} asked to change: {fields}",
+        "approve": "Approve change",
+        "reject": "Reject change",
+        "approved": "Change approved",
+        "rejected": "Change rejected"
+      },
+      "actions": {
+        "deactivate": "Deactivate",
+        "activate": "Activate",
+        "delete": "Delete",
+        "deactivated": "Account {code} deactivated",
+        "activated": "Account {code} activated",
+        "deleted": "Account {code} deleted",
+        "deleteTitle": "Delete account {code}?",
+        "deleteBody": "Only accounts that were never used can be deleted. This cannot be undone.",
+        "inUse": "Used accounts can be deactivated but not deleted"
+      },
+      "tabs": {
+        "details": "Details",
+        "history": "History"
+      },
+      "history": {
+        "CREATED": "Created",
+        "EDITED": "Edited",
+        "CHANGE_REQUESTED": "Change requested",
+        "CHANGE_APPROVED": "Change approved",
+        "CHANGE_REJECTED": "Change rejected",
+        "DEACTIVATED": "Deactivated",
+        "ACTIVATED": "Activated"
+      }
+    },
+    "journals": {
+      "title": "Journal Entries",
+      "description": "Manual and adjusting journals, their approval and posting.",
+      "new": "New journal",
+      "tabsLabel": "Journal status",
+      "searchPlaceholder": "Number, reference or description",
+      "filters": {
+        "type": "Type",
+        "account": "Account",
+        "amountMin": "Amount from",
+        "amountMax": "Amount to",
+        "preparer": "Preparer",
+        "mine": "Prepared by me",
+        "source": "Source",
+        "sourceManual": "Manual entries",
+        "sourceSystem": "From modules"
+      },
+      "col": {
+        "number": "Journal no",
+        "date": "Posting date",
+        "type": "Type",
+        "description": "Description",
+        "reference": "Reference",
+        "total": "Total ({currency})",
+        "status": "Status",
+        "preparer": "Preparer",
+        "approver": "Approver"
+      },
+      "draftNo": "Draft",
+      "empty": "No journals yet. Create one to record an accrual, a reclassification or an adjustment."
+    },
+    "journal": {
+      "newTitle": "New journal",
+      "title": "Journal {number}",
+      "fields": {
+        "postingDate": "Posting date",
+        "documentDate": "Document date",
+        "description": "Description",
+        "reference": "Reference",
+        "currency": "Journal currency",
+        "type": "Type",
+        "period": "Period",
+        "preparer": "Prepared by",
+        "source": "Source document",
+        "currencyHint": "New lines use this currency; each line can have its own currency and rate.",
+        "adjustingHint": "Adjusting journals may be posted into a soft-closed period by permitted users."
+      },
+      "validation": {
+        "dateRequired": "Enter the posting date",
+        "documentDateRequired": "Enter the document date",
+        "descriptionRequired": "Enter a description",
+        "closedPeriod": "Posting date is in a closed period ({period})",
+        "softClosedPeriod": "{period} is soft-closed: only adjusting journals by permitted users",
+        "noPeriod": "The posting date is outside every accounting period",
+        "headerAccount": "Account {code} is a header account",
+        "controlAccount": "Account {code} is a control account and cannot be used in a manual journal",
+        "rateMissing": "Exchange rate required for {currency} on {date}"
+      },
+      "actions": {
+        "saveDraft": "Save draft",
+        "submit": "Submit for approval",
+        "recall": "Recall",
+        "copy": "Copy",
+        "cancelDraft": "Cancel draft",
+        "print": "Print voucher",
+        "approve": "Approve",
+        "reject": "Reject",
+        "delegate": "Delegate",
+        "post": "Post",
+        "reverse": "Reverse"
+      },
+      "toast": {
+        "saved": "Draft saved",
+        "submitted": "Journal submitted for approval",
+        "recalled": "Journal recalled to draft",
+        "cancelled": "Draft cancelled",
+        "approved": "Journal approved",
+        "rejected": "Journal rejected and returned to the preparer",
+        "delegated": "Approval delegated to {name}",
+        "posted": "Posted as {number}",
+        "reversed": "Reversal {number} posted",
+        "copied": "Copied into a new draft"
+      },
+      "banner": {
+        "posted": "Posted journals are read-only. Correct mistakes with a reversal.",
+        "reversedBy": "Reversed by {number}",
+        "reverses": "Reverses {number}",
+        "reason": "Reason: {reason}",
+        "rejected": "Rejected: {comment}",
+        "submitted": "Waiting for approval. Recall it to make changes.",
+        "approved": "Approved and ready to post.",
+        "cancelled": "This draft was cancelled.",
+        "system": "Generated by {source}. Change the source document instead."
+      },
+      "sections": {
+        "lines": "Lines",
+        "approval": "Approval"
+      },
+      "post": {
+        "title": "Post journal",
+        "description": "Posting writes the journal to the ledger and assigns its number. Posted entries cannot be edited."
+      },
+      "reverse": {
+        "title": "Reverse journal {number}",
+        "description": "A mirror journal with opposite amounts will be posted. The original stays in the ledger, marked reversed.",
+        "date": "Reversal date",
+        "dateHint": "Must be in an open period."
+      },
+      "reject": {
+        "title": "Reject journal",
+        "description": "The journal returns to the preparer with your comment."
+      },
+      "approve": {
+        "title": "Approve journal"
+      },
+      "delegate": {
+        "title": "Delegate approval",
+        "description": "Choose who should approve this step instead of you.",
+        "user": "Approver",
+        "submit": "Delegate"
+      },
+      "limit": "Amount exceeds your approval limit ({limit})",
+      "voucher": {
+        "title": "Journal voucher",
+        "draftWatermark": "DRAFT",
+        "preparedBy": "Prepared by",
+        "approvedBy": "Approved by",
+        "postedBy": "Posted by",
+        "signature": "Signature and date"
+      },
+      "history": {
+        "CREATED": "Created",
+        "EDITED": "Edited",
+        "SUBMITTED": "Submitted",
+        "RECALLED": "Recalled",
+        "APPROVED": "Approved",
+        "REJECTED": "Rejected",
+        "DELEGATED": "Approval delegated",
+        "POSTED": "Posted",
+        "REVERSED": "Reversed",
+        "CANCELLED": "Cancelled",
+        "ATTACHMENT_ADDED": "Attachment added"
+      },
+      "notFound": "This journal does not exist or you do not have access to it."
+    },
+    "approvals": {
+      "title": "Approvals Inbox",
+      "description": "Documents waiting for your decision. Open each item to review and approve it; there is no bulk approval.",
+      "col": {
+        "number": "Number / reference",
+        "date": "Date",
+        "description": "Description",
+        "total": "Total ({currency})",
+        "preparer": "Preparer",
+        "submitted": "Submitted at",
+        "step": "Step",
+        "type": "Document"
+      },
+      "empty": "No items awaiting your approval",
+      "own": "You prepared this",
+      "type": {
+        "JOURNAL": "Journal",
+        "EXPENSE": "Expense",
+        "AR_INVOICE": "Customer invoice",
+        "AP_INVOICE": "Supplier invoice",
+        "CREDIT_NOTE": "Credit note",
+        "SUPPLIER_PAYMENT": "Supplier payment",
+        "SUPPLIER_BANK": "Supplier bank details",
+        "DEPRECIATION_RUN": "Depreciation run",
+        "ASSET_DISPOSAL": "Asset disposal",
+        "BUDGET": "Budget"
+      }
+    },
+    "ledger": {
+      "title": "General Ledger",
+      "description": "Account activity with opening balance, running balance and closing balance. Posted entries only.",
+      "accounts": "Accounts",
+      "addAccount": "Add account",
+      "removeAccount": "Remove {code}",
+      "currencyView": "Amounts in",
+      "base": "Base currency ({currency})",
+      "transaction": "Transaction currency",
+      "pick": "Choose at least one account and a date range, then run the inquiry.",
+      "col": {
+        "date": "Date",
+        "journal": "Journal no",
+        "source": "Source",
+        "reference": "Reference",
+        "description": "Description",
+        "debit": "Debit",
+        "credit": "Credit",
+        "balance": "Balance",
+        "branch": "Branch",
+        "department": "Department"
+      },
+      "opening": "Opening balance",
+      "closing": "Closing balance",
+      "totals": "Totals for the period",
+      "noLines": "No posted lines in this range",
+      "truncated": "Only the first lines are shown. Export the report for every line.",
+      "balanceSide": "Balances on the account's normal side ({side})"
+    },
+    "tb": {
+      "title": "Trial Balance",
+      "description": "Opening, period and closing balances of every account. Posted entries only.",
+      "includeZero": "Include zero balances",
+      "level": "Hierarchy level",
+      "allLevels": "All levels",
+      "levelN": "Level {level}",
+      "col": {
+        "code": "Code",
+        "account": "Account",
+        "opening": "Opening",
+        "period": "Period",
+        "closing": "Closing",
+        "debit": "Debit",
+        "credit": "Credit"
+      },
+      "total": "Total",
+      "balanced": "Debits equal credits",
+      "unbalanced": "Debits do not equal credits. This should never happen: report it to your System Administrator with the reference below.",
+      "restricted": "Some accounts are hidden for your role, so the totals may not balance.",
+      "drill": "Open {code} in the General Ledger",
+      "empty": "No posted transactions in this range"
+    },
+    "export": {
+      "queued": "Export started. PDF and Excel files are produced by the server; you will be notified when the file is ready.",
+      "done": "Downloaded {file}"
+    },
+    "periods": {
+      "title": "Accounting Periods",
+      "description": "Period status and the month-end checklist. Closed periods reject posting.",
+      "year": "Fiscal year",
+      "col": {
+        "period": "Period",
+        "dates": "Dates",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "select": "Show checklist for {period}",
+      "actions": {
+        "softClose": "Soft-close",
+        "open": "Open",
+        "close": "Close",
+        "requestReopen": "Request reopen",
+        "approveReopen": "Approve reopen",
+        "rejectReopen": "Reject reopen",
+        "yearEnd": "Year-end close"
+      },
+      "toast": {
+        "softClosed": "{period} soft-closed",
+        "opened": "{period} opened",
+        "closed": "{period} closed",
+        "requested": "Reopen request sent to the Owner",
+        "reopened": "{period} reopened",
+        "reopenRejected": "Reopen request rejected",
+        "yearClosed": "{year} closed; closing journal {number}"
+      },
+      "confirm": {
+        "softClose": "Soft-close {period}? Only adjusting journals by permitted users can then be posted into it.",
+        "open": "Return {period} to Open? Ordinary posting will be allowed again.",
+        "close": "Close {period}? No further posting will be possible without an approved reopening.",
+        "reopen": "Ask the Owner to reopen {period}. Every posting during the reopening is reported.",
+        "approveReopen": "Reopen {period}? Requested by {name}: {reason}",
+        "yearEnd": "Close {year}? Income and expense balances move to retained earnings by a closing journal."
+      },
+      "reopenBanner": "Reopen requested by {name} on {date}: {reason}",
+      "reopenedBanner": "{period} is reopened. Postings made now are listed on the Postings in Reopened Periods report.",
+      "yearClosed": "{year} is closed.",
+      "yearEndBlocked": "Close every period of the year first.",
+      "checklist": {
+        "title": "Month-end checklist: {period}",
+        "task": "Task",
+        "owner": "Owner",
+        "status": "Status",
+        "evidence": "Evidence",
+        "check": "Automatic check",
+        "DONE": "Done",
+        "PENDING": "To do",
+        "NOT_APPLICABLE": "Not applicable",
+        "PASS": "Passed",
+        "FAIL": "Failed",
+        "NOT_AVAILABLE": "Not available yet",
+        "blocking": "Blocking",
+        "blockingTitle": "These items must be resolved before closing",
+        "noBlocking": "Nothing blocks closing this period.",
+        "markDone": "Mark done",
+        "markUndone": "Mark not done",
+        "evidencePlaceholder": "Evidence or note (optional)",
+        "by": "by {name}"
+      },
+      "history": {
+        "title": "Period history",
+        "SOFT_CLOSED": "Soft-closed",
+        "OPENED": "Opened",
+        "CLOSED": "Closed",
+        "REOPEN_REQUESTED": "Reopen requested",
+        "REOPENED": "Reopened",
+        "REOPEN_REJECTED": "Reopen rejected",
+        "CHECKLIST_DONE": "Checklist item done",
+        "CHECKLIST_UNDONE": "Checklist item reopened"
+      }
+    },
+    "rates": {
+      "title": "Exchange Rates",
+      "description": "Rates by date, currency and rate type. Rates in this demo are illustrative, not official rates.",
+      "new": "New rate",
+      "col": {
+        "date": "Date",
+        "pair": "Currency pair",
+        "type": "Rate type",
+        "rate": "Rate",
+        "inverse": "Inverse",
+        "source": "Source"
+      },
+      "type": {
+        "TRANSACTION": "Transaction",
+        "CLOSING": "Closing",
+        "AVERAGE": "Average"
+      },
+      "allTypes": "All rate types",
+      "allCurrencies": "All currencies",
+      "form": {
+        "title": "New exchange rate",
+        "date": "Rate date",
+        "currency": "Currency",
+        "type": "Rate type",
+        "rate": "Rate",
+        "source": "Source",
+        "sourcePlaceholder": "e.g. accountant's chosen source",
+        "save": "Save rate",
+        "saved": "Rate saved",
+        "confirm": "Save {rate} for {currency} on {date}? Documents dated that day will use it by default.",
+        "illustrative": "Rates you enter in the demo are kept until the page is reloaded."
+      },
+      "empty": "No rates for these filters"
+    }
+  },
+  "cb": {
+    "kind": {
+      "CASH": "Cash",
+      "BANK": "Bank"
+    },
+    "accounts": {
+      "title": "Cash and Bank Accounts",
+      "description": "Balances of every cash box and bank account. Open an account for its cashbook or bankbook.",
+      "cash": "Cash",
+      "bank": "Bank accounts",
+      "col": {
+        "code": "Code",
+        "name": "Name",
+        "bank": "Bank",
+        "number": "Account number",
+        "currency": "Currency",
+        "gl": "GL account",
+        "custodian": "Custodian",
+        "balance": "Balance",
+        "balanceBase": "Balance ({currency})",
+        "lastReconciled": "Last reconciled"
+      },
+      "belowMin": "Below minimum ({amount})",
+      "never": "Never",
+      "empty": "No cash or bank accounts you can see",
+      "maintainNote": "Accounts are set up in System Settings."
+    },
+    "book": {
+      "cashbook": "Cashbook: {name}",
+      "bankbook": "Bankbook: {name}",
+      "col": {
+        "date": "Date",
+        "journal": "Journal no",
+        "source": "Document",
+        "reference": "Reference",
+        "description": "Description",
+        "receipt": "Receipts",
+        "payment": "Payments",
+        "balance": "Balance",
+        "balanceBase": "Balance ({currency})"
+      },
+      "opening": "Opening balance",
+      "closing": "Closing balance",
+      "totals": "Totals",
+      "empty": "No posted transactions in this range",
+      "newTransaction": "New transaction",
+      "reconcile": "Reconcile"
+    },
+    "type": {
+      "RECEIPT": "Receipt",
+      "PAYMENT": "Payment",
+      "TRANSFER": "Transfer",
+      "DEPOSIT": "Deposit",
+      "WITHDRAWAL": "Withdrawal",
+      "CHARGE": "Bank charge"
+    },
+    "typeHint": {
+      "RECEIPT": "Money received into a cash or bank account, other than from a customer invoice.",
+      "PAYMENT": "Money paid out, other than to a supplier invoice.",
+      "TRANSFER": "Move money between two of your accounts, including between currencies.",
+      "DEPOSIT": "Cash taken to the bank.",
+      "WITHDRAWAL": "Cash taken out of the bank.",
+      "CHARGE": "A fee the bank charged to the account."
+    },
+    "tx": {
+      "title": "Cash and Bank Transactions",
+      "description": "Receipts, payments, transfers, deposits, withdrawals and bank charges.",
+      "new": "New",
+      "newTitle": "New {type}",
+      "titleNo": "{type} {number}",
+      "draftTitle": "{type} (draft)",
+      "tabsLabel": "Transaction status",
+      "searchPlaceholder": "Number, reference, payee or description",
+      "col": {
+        "number": "Number",
+        "date": "Date",
+        "type": "Type",
+        "account": "Account",
+        "toAccount": "To account",
+        "description": "Description",
+        "payee": "Payer or payee",
+        "amount": "Amount",
+        "status": "Status",
+        "preparer": "Preparer"
+      },
+      "allTypes": "All types",
+      "allAccounts": "All accounts",
+      "empty": "No transactions match",
+      "form": {
+        "type": "Type",
+        "date": "Date",
+        "account": "Cash or bank account",
+        "fromAccount": "From account",
+        "toAccount": "To account",
+        "amount": "Amount",
+        "toAmount": "Amount received",
+        "toAmountHint": "The accounts use different currencies: enter what the receiving account got.",
+        "reference": "Reference",
+        "description": "Description",
+        "payee": "Payer or payee",
+        "lines": "Counter-account lines",
+        "lineAccount": "Account, line {line}",
+        "lineDescription": "Description, line {line}",
+        "lineAmount": "Amount, line {line}",
+        "lineDepartment": "Department, line {line}",
+        "addLine": "Add line",
+        "removeLine": "Remove line {line}",
+        "linesTotal": "Lines total {total} of {amount}",
+        "linesMatch": "Lines match the amount",
+        "required": "This field is required",
+        "positive": "Enter an amount greater than zero",
+        "balance": "Balance {amount}"
+      },
+      "actions": {
+        "saveDraft": "Save draft",
+        "submit": "Submit for posting",
+        "post": "Post",
+        "cancel": "Cancel",
+        "print": "Print voucher"
+      },
+      "toast": {
+        "saved": "Draft saved",
+        "submitted": "Submitted for posting",
+        "cancelled": "Transaction cancelled"
+      },
+      "post": {
+        "title": "Post {type}",
+        "description": "Posting writes the transaction to the ledger and assigns its number."
+      },
+      "banner": {
+        "submitted": "Waiting for an accountant to post it.",
+        "posted": "Posted as {number} ({journal}). Posted transactions are read-only.",
+        "cancelled": "This transaction was cancelled.",
+        "expense": "Pays expense {number}"
+      },
+      "voucher": {
+        "RECEIPT": "Receipt voucher",
+        "PAYMENT": "Payment voucher",
+        "OTHER": "Transfer voucher",
+        "receivedBy": "Received by",
+        "paidBy": "Paid by",
+        "approvedBy": "Approved by",
+        "signature": "Signature and date"
+      },
+      "notFound": "This transaction does not exist or you do not have access to it."
+    },
+    "rec": {
+      "title": "Bank Reconciliation",
+      "description": "Match bank statement lines to the books, record bank-only items, and complete each month.",
+      "start": {
+        "button": "Start reconciliation",
+        "title": "Start a reconciliation",
+        "account": "Bank account",
+        "date": "Statement date",
+        "closing": "Statement closing balance",
+        "submit": "Start"
+      },
+      "import": "Import statement",
+      "col": {
+        "account": "Bank account",
+        "date": "Statement date",
+        "closing": "Closing balance",
+        "difference": "Difference",
+        "status": "Status",
+        "completedBy": "Completed by"
+      },
+      "empty": "No reconciliations yet",
+      "pageTitle": "{account} · {date}",
+      "statement": "Bank statement",
+      "book": "Books",
+      "line": {
+        "date": "Date",
+        "description": "Description",
+        "reference": "Reference",
+        "amount": "Amount",
+        "journal": "Journal no",
+        "status": "Status",
+        "select": "Select {description}"
+      },
+      "show": {
+        "unmatched": "Unmatched",
+        "matched": "Matched",
+        "all": "All"
+      },
+      "matched": "Matched",
+      "unmatchedState": "Unmatched",
+      "suggested": "Suggested",
+      "actions": {
+        "autoMatch": "Auto-match",
+        "match": "Match selected",
+        "unmatch": "Unmatch",
+        "adjust": "Create adjustment",
+        "complete": "Complete",
+        "reopen": "Reopen",
+        "clear": "Clear selection"
+      },
+      "selection": "Selected: statement {statement}, books {book}, difference {difference}",
+      "summary": {
+        "title": "Summary",
+        "statementOpening": "Statement opening balance",
+        "statementClosing": "Statement closing balance",
+        "outstandingDeposits": "+ Outstanding deposits",
+        "unpresentedPayments": "− Unpresented payments",
+        "adjustedBank": "Adjusted bank balance",
+        "bookBalance": "Book balance",
+        "difference": "Difference",
+        "unrecorded": "On the statement, not in the books",
+        "inconsistent": "Statement opening balance does not match previous reconciliation closing balance (lines add up to {total})",
+        "zero": "No difference"
+      },
+      "adjust": {
+        "title": "Adjustment for {description}",
+        "description": "Posts a journal for this statement line and matches it.",
+        "account": "Income or expense account",
+        "text": "Description",
+        "date": "Date",
+        "submit": "Post adjustment"
+      },
+      "complete": {
+        "title": "Complete reconciliation",
+        "description": "A completed reconciliation is locked. Changes later need a controlled reopening.",
+        "explanation": "Explain the difference",
+        "differenceNote": "Difference of {amount} must be resolved or explained before completion"
+      },
+      "reopen": {
+        "title": "Reopen reconciliation",
+        "description": "Only the latest completed reconciliation can be reopened. The reopening is recorded."
+      },
+      "banner": {
+        "completed": "Completed by {name} on {date}. Locked, read-only.",
+        "explained": "Difference {amount} explained: {reason}"
+      },
+      "toast": {
+        "autoMatched": "{count} pairs matched",
+        "matched": "Lines matched",
+        "unmatched": "Match removed",
+        "adjusted": "Adjustment posted and matched",
+        "reopened": "Reconciliation reopened",
+        "nothing": "Nothing new to match"
+      },
+      "noLines": "No lines"
+    },
+    "import": {
+      "title": "Import bank statement",
+      "description": "Upload the bank's CSV file, map its columns, check the preview, then import. Lines already imported are skipped.",
+      "steps": {
+        "file": "File",
+        "mapping": "Columns",
+        "preview": "Preview",
+        "result": "Result",
+        "label": "Import steps"
+      },
+      "account": "Bank account",
+      "file": "Statement file",
+      "fileHint": "CSV file. Excel files are converted by the server.",
+      "sample": "Download a sample April statement (demo)",
+      "mapping": {
+        "title": "Match the file's columns",
+        "saved": "Using the mapping saved for this account.",
+        "date": "Date",
+        "description": "Description",
+        "reference": "Reference",
+        "amount": "Amount (signed)",
+        "debit": "Money out (debit)",
+        "credit": "Money in (credit)",
+        "balance": "Balance",
+        "dateFormat": "Date format",
+        "mode": "Amounts are in",
+        "single": "One signed column",
+        "separate": "Separate money-in and money-out columns",
+        "notMapped": "Not in the file",
+        "rows": "{count} data rows"
+      },
+      "col": {
+        "row": "Row",
+        "date": "Date",
+        "description": "Description",
+        "reference": "Reference",
+        "amount": "Amount",
+        "status": "Status",
+        "problem": "Problem"
+      },
+      "status": {
+        "VALID": "New",
+        "ERROR": "Error",
+        "DUPLICATE": "Duplicate",
+        "PREVIEW": "Preview",
+        "COMMITTED": "Imported"
+      },
+      "errors": {
+        "date": "Date missing or not valid",
+        "amount": "Amount missing or zero",
+        "balance": "Balance is not a number",
+        "description": "Description missing"
+      },
+      "counts": "{valid} new · {duplicates} duplicates (skipped) · {errors} errors (skipped)",
+      "commit": "Import {count} lines",
+      "nothing": "Nothing new to import",
+      "done": "{count} statement lines imported",
+      "toReconcile": "Go to bank reconciliation",
+      "another": "Import another file",
+      "history": {
+        "title": "Import history",
+        "file": "File",
+        "by": "Imported by",
+        "at": "Date",
+        "lines": "Lines",
+        "status": "Status",
+        "empty": "No imports yet"
+      },
+      "back": "Back",
+      "next": "Next",
+      "chooseFile": "Choose a CSV file"
+    }
+  },
+  "exp": {
+    "title": "Expenses",
+    "description": "Record expenses, allocate them to departments and branches, approve and post them.",
+    "new": "New expense",
+    "newTitle": "New expense",
+    "draftTitle": "Expense (draft)",
+    "titleNo": "Expense {number}",
+    "tabsLabel": "Expense status",
+    "searchPlaceholder": "Number, payee or description",
+    "col": {
+      "number": "Number",
+      "date": "Date",
+      "category": "Category",
+      "description": "Description",
+      "payee": "Payee",
+      "mode": "Payment",
+      "amount": "Amount",
+      "status": "Status",
+      "preparer": "Preparer"
+    },
+    "allCategories": "All categories",
+    "allModes": "All payment modes",
+    "mode": {
+      "PAID": "Paid now",
+      "UNPAID": "Not yet paid",
+      "CLAIM": "Employee claim"
+    },
+    "modeHint": {
+      "PAID": "Paid from cash or bank today: the expense and the payment are recorded together.",
+      "UNPAID": "Recorded now as an accrued liability; pay it later with Settle.",
+      "CLAIM": "An employee paid it; the company owes the employee until it is reimbursed."
+    },
+    "empty": "No expenses yet. Record one to track spending by department and branch.",
+    "form": {
+      "date": "Date",
+      "category": "Category",
+      "description": "Description",
+      "payee": "Payee",
+      "mode": "Payment",
+      "paidFrom": "Paid from",
+      "currency": "Currency",
+      "amount": "Amount",
+      "select": "Select…",
+      "required": "This field is required",
+      "positive": "Enter an amount greater than zero",
+      "attachmentRequired": "{category} needs an attached receipt or invoice",
+      "attachmentAbove": "An attachment is needed above {amount}",
+      "attachAfterSave": "Save the draft to add attachments."
+    },
+    "alloc": {
+      "title": "Allocation",
+      "mode": "Allocate by",
+      "PERCENT": "Percentage",
+      "AMOUNT": "Amount",
+      "department": "Department, line {line}",
+      "branch": "Branch, line {line}",
+      "percent": "Percentage, line {line}",
+      "amount": "Amount, line {line}",
+      "colDepartment": "Department",
+      "colBranch": "Branch",
+      "colPercent": "%",
+      "colAmount": "Amount",
+      "add": "Add line",
+      "remove": "Remove line {line}",
+      "split": "Split evenly",
+      "totalPercent": "{total}% of 100%",
+      "totalAmount": "{total} of {amount}",
+      "percentError": "Percentages must total 100%",
+      "amountError": "Allocated amounts must equal the expense amount",
+      "rounding": "The last line takes any rounding difference."
+    },
+    "budget": {
+      "title": "Spending this year",
+      "spent": "{account} · {department}: {amount} spent so far this year",
+      "noBudget": "No approved budget yet; budgets arrive with the Budgets module.",
+      "allDepartments": "all departments"
+    },
+    "actions": {
+      "saveDraft": "Save draft",
+      "submit": "Submit for approval",
+      "recall": "Recall",
+      "cancel": "Cancel draft",
+      "approve": "Approve",
+      "reject": "Reject",
+      "post": "Post",
+      "settle": "Pay now"
+    },
+    "toast": {
+      "saved": "Draft saved",
+      "submitted": "Expense submitted for approval",
+      "recalled": "Expense recalled to draft",
+      "cancelled": "Draft cancelled"
+    },
+    "banner": {
+      "submitted": "Waiting for approval.",
+      "approved": "Approved and ready to post.",
+      "posted": "Posted as {number} ({journal}). Posted expenses are read-only.",
+      "rejected": "Rejected: {comment}",
+      "cancelled": "This draft was cancelled.",
+      "unpaid": "Not paid yet: the amount is owed until it is paid.",
+      "settled": "Paid by {number} on {date}"
+    },
+    "post": {
+      "title": "Post expense",
+      "description": "Posting records the expense in the ledger."
+    },
+    "approveDialog": {
+      "title": "Approve expense"
+    },
+    "rejectDialog": {
+      "title": "Reject expense",
+      "description": "The expense returns to the preparer with your comment."
+    },
+    "settle": {
+      "title": "Pay expense {number}",
+      "description": "Records a payment that clears the amount owed. The expense is not recorded again.",
+      "account": "Pay from",
+      "date": "Payment date"
+    },
+    "notFound": "This expense does not exist or you do not have access to it."
+  },
+  "arap": {
+    "ar": {
+      "party": "Customer",
+      "allParties": "All customers",
+      "partiesTitle": "Customers",
+      "partiesDescription": "Customer details, contacts, credit limits, balances and statements.",
+      "newParty": "New customer",
+      "defaultAccount": "Default revenue account",
+      "invoicesTitle": "Customer Invoices",
+      "invoicesDescription": "Sales invoices from draft to approval, posting and payment.",
+      "newInvoice": "New customer invoice",
+      "titleNo": "Invoice {number}",
+      "draftTitle": "Draft customer invoice",
+      "recordPayment": "Record receipt",
+      "paymentsTitle": "Customer Receipts",
+      "paymentsDescription": "Money received from customers and how it is allocated to invoices.",
+      "newPayment": "New receipt",
+      "paymentNo": "Receipt {number}",
+      "draftPayment": "Draft receipt",
+      "account": "Received into",
+      "agingTitle": "Accounts Receivable Aging"
+    },
+    "ap": {
+      "party": "Supplier",
+      "allParties": "All suppliers",
+      "partiesTitle": "Suppliers",
+      "partiesDescription": "Supplier details, contacts, verified bank details, balances and statements.",
+      "newParty": "New supplier",
+      "defaultAccount": "Default expense account",
+      "invoicesTitle": "Supplier Invoices",
+      "invoicesDescription": "Bills from suppliers: duplicate check, approval, posting and payment.",
+      "newInvoice": "New supplier invoice",
+      "titleNo": "Supplier invoice {number}",
+      "draftTitle": "Draft supplier invoice",
+      "recordPayment": "Pay supplier",
+      "paymentsTitle": "Supplier Payments",
+      "paymentsDescription": "Payment proposals, approval and release to verified supplier bank accounts.",
+      "newPayment": "New supplier payment",
+      "paymentNo": "Payment {number}",
+      "draftPayment": "Draft supplier payment",
+      "account": "Pay from",
+      "agingTitle": "Accounts Payable Aging"
+    },
+    "actions": {
+      "apply": "Apply",
+      "approve": "Approve",
+      "cancel": "Cancel document",
+      "creditNote": "Create credit note",
+      "post": "Post",
+      "postReceipt": "Post receipt",
+      "print": "Print",
+      "printReceipt": "Print receipt voucher",
+      "recall": "Recall",
+      "reject": "Reject",
+      "release": "Release payment",
+      "saveDraft": "Save draft",
+      "submit": "Submit for approval"
+    },
+    "aging": {
+      "asOf": "As of {date}",
+      "asOfLabel": "As of",
+      "asOfNote": "Outstanding amounts by days past the due date, in USD, as of today.",
+      "difference": "Differs from control account {account} by {amount}",
+      "reconciled": "Agrees with control account {account}: {amount}",
+      "note": "Amounts in base currency at each document's own rate. Unapplied customer receipts are held in account 2300 and are not in this report.",
+      "bucket": {
+        "current": "Current",
+        "d1_30": "1–30 days",
+        "d31_60": "31–60 days",
+        "d61_90": "61–90 days",
+        "over_90": "Over 90 days",
+        "total": "Total"
+      }
+    },
+    "bank": {
+      "title": "Bank details",
+      "bank_name": "Bank",
+      "account_name": "Account name",
+      "account_number": "Account number",
+      "change": "Change bank details",
+      "changeHint": "The change waits for approval by another user. Payments to this supplier are held until then.",
+      "decided": "Decision recorded",
+      "newHint": "New suppliers start as drafts; their bank details are confirmed when the supplier is verified.",
+      "none": "No bank details recorded",
+      "paymentsHeld": "Payments to this supplier are held until the change is approved.",
+      "pendingTitle": "Bank-details change waiting for approval",
+      "request": "Request change",
+      "requested": "Change requested",
+      "requestedBy": "Requested by {name}",
+      "statusPending": "A change is waiting for approval",
+      "statusUnverified": "Not verified",
+      "statusVerified": "Verified"
+    },
+    "banner": {
+      "approved": "Approved. It can now be posted.",
+      "cancelled": "This document was cancelled.",
+      "creditOverride": "Waiting for approval. The customer would go over the credit limit, so the Finance Manager must also approve.",
+      "creditPosted": "Posted as {number} against invoice {invoice}. Journal:",
+      "creditSubmitted": "Waiting for approval by a user other than the preparer.",
+      "duplicateReason": "Kept as a possible duplicate: {reason}",
+      "opening": "Balance brought forward at go-live, part of the opening journal:",
+      "paymentApproved": "Approved. The Finance Manager can release it with the bank reference.",
+      "paymentSubmitted": "Waiting for approval.",
+      "posted": "Posted as {number}. Journal:",
+      "receiptPosted": "Posted as {number}. Journal:",
+      "rejected": "Rejected: {comment}",
+      "released": "Released as {number}, bank reference {reference}, by {by}. Journal:",
+      "submitted": "Waiting for approval.",
+      "unapplied": "{amount} is not yet applied to an invoice and is held as a customer credit."
+    },
+    "credit": {
+      "title": "Credit position",
+      "limit": "Credit limit",
+      "noLimit": "No limit",
+      "balance": "Balance owed",
+      "overdue": "Overdue",
+      "unapplied": "Unapplied receipts",
+      "after": "Balance with this invoice",
+      "over": "The credit is more than the invoice's outstanding amount.",
+      "listTitle": "Credit Notes",
+      "listDescription": "Credits against posted customer invoices. Each one is approved by someone other than its preparer.",
+      "empty": "No credit notes yet",
+      "emptyHint": "Create one from a posted invoice.",
+      "pickInvoice": "Open a posted invoice and choose Create credit note.",
+      "invoice": "Invoice",
+      "reason": "Reason",
+      "total": "Credit total",
+      "newTitle": "Credit note for invoice {number}",
+      "titleNo": "Credit note {number}",
+      "draftTitle": "Draft credit note",
+      "notFound": "This credit note does not exist or you do not have access to it.",
+      "outstanding": "Outstanding {amount}",
+      "linesHint": "Lines start as a copy of the invoice; change quantities or prices to what is being credited. Tax uses the invoice's rates.",
+      "effect": "Reduces invoice {invoice}"
+    },
+    "dialogs": {
+      "approve": "Approve {title}",
+      "reject": "Reject {title}",
+      "post": "Post {title}",
+      "cancel": "Cancel {title}",
+      "cancelDescription": "The document stays on record as cancelled. A posted invoice is corrected with a credit note instead.",
+      "postReceipt": "Post receipt",
+      "release": "Release {title}",
+      "releaseDescription": "Releasing records the payment as made and posts it. It cannot be released twice.",
+      "apply": "Apply unapplied amount of {title}",
+      "applyDescription": "Moves the customer credit onto the chosen invoices."
+    },
+    "document": {
+      "label": "Invoice preview",
+      "draft": "DRAFT",
+      "titleAr": "TAX INVOICE",
+      "titleAp": "SUPPLIER INVOICE (copy)",
+      "unnumbered": "Not yet numbered",
+      "supplierNo": "Supplier's no. {number}",
+      "billTo": "Bill to",
+      "from": "From",
+      "date": "Date",
+      "due": "Due",
+      "terms": "{days} days",
+      "currency": "Currency",
+      "item": "Item",
+      "qty": "Qty",
+      "price": "Price",
+      "discount": "Discount",
+      "tax": "Tax",
+      "amount": "Amount",
+      "subtotal": "Subtotal",
+      "taxTotal": "Tax",
+      "total": "Total",
+      "baseTotal": "Base currency equivalent",
+      "disclaimer": "Demo document for {party}. Layout and tax wording are illustrative and not reviewed for tax compliance."
+    },
+    "duplicate": {
+      "title": "Possible duplicate",
+      "description": "This looks like {number}: same supplier, date and amount. Give the reason it is a separate invoice."
+    },
+    "effect": {
+      "ar": "Receivable from {party}",
+      "ap": "Payable to {party}"
+    },
+    "form": {
+      "currency": "Currency",
+      "date": "Invoice date",
+      "dueDate": "Due date",
+      "dueOn": "Due on {date}",
+      "duplicate": "Already recorded as {number} on {date}",
+      "notes": "Notes",
+      "positive": "Must be greater than zero",
+      "rateHint": "The exchange rate of the invoice date is applied when it is submitted.",
+      "receivedDate": "Received on",
+      "reference": "Reference",
+      "required": "Required",
+      "select": "Select…",
+      "supplierNo": "Supplier's invoice no.",
+      "terms": "Payment terms (days)"
+    },
+    "invoices": {
+      "col": {
+        "number": "Number",
+        "supplierNo": "Supplier's no.",
+        "date": "Date",
+        "due": "Due",
+        "total": "Total",
+        "outstanding": "Outstanding",
+        "status": "Status"
+      },
+      "draftNo": "Draft",
+      "empty": "No invoices yet",
+      "notFound": "This invoice does not exist or you do not have access to it.",
+      "searchPlaceholder": "Number, party or reference",
+      "tabsLabel": "Document status"
+    },
+    "lines": {
+      "caption": "Invoice lines",
+      "description": "Description",
+      "quantity": "Qty",
+      "unitPrice": "Unit price",
+      "discount": "Discount",
+      "taxCode": "Tax code",
+      "account": "Account",
+      "department": "Department / branch",
+      "asset": "Asset",
+      "total": "Line total",
+      "actions": "Actions",
+      "addLine": "Add line",
+      "anyBranch": "Any branch",
+      "noTax": "No tax code",
+      "unverifiedShort": "unverified",
+      "descriptionFor": "Description, line {n}",
+      "quantityFor": "Quantity, line {n}",
+      "unitPriceFor": "Unit price, line {n}",
+      "discountFor": "Discount, line {n}",
+      "taxCodeFor": "Tax code, line {n}",
+      "accountFor": "Account, line {n}",
+      "departmentFor": "Department, line {n}",
+      "branchFor": "Branch, line {n}",
+      "assetFor": "Fixed asset, line {n}",
+      "removeLine": "Remove line {n}",
+      "taxIncluded": "incl. tax {tax}",
+      "assetNote": "Lines marked as assets are flagged for the fixed asset register (Phase 6).",
+      "unverifiedWarning": "Tax code {codes} is not verified by a tax adviser. The invoice can be saved, but posting is blocked until the code is verified."
+    },
+    "parties": {
+      "col": {
+        "code": "Code",
+        "name": "Name",
+        "phone": "Phone",
+        "terms": "Terms",
+        "currency": "Currency",
+        "creditLimit": "Credit limit",
+        "balance": "Balance (USD)",
+        "overdue": "Overdue (USD)",
+        "status": "Status"
+      },
+      "days": "{days} days",
+      "empty": "Nothing to show",
+      "notFound": "This record does not exist or you do not have access to it.",
+      "searchPlaceholder": "Code, name, tax ID or phone",
+      "tabsLabel": "Status",
+      "withBalance": "With a balance only",
+      "noDocuments": "No documents",
+      "tabs": {
+        "details": "Details and contacts",
+        "bank": "Bank details",
+        "documents": "Documents",
+        "statement": "Statement",
+        "aging": "Aging"
+      },
+      "setStatus": {
+        "ACTIVE": "Activate",
+        "INACTIVE": "Deactivate",
+        "VERIFIED": "Verify supplier",
+        "BLOCKED": "Block supplier"
+      },
+      "form": {
+        "code": "Code",
+        "name": "Name (English)",
+        "nameKm": "Name (Khmer)",
+        "taxId": "Tax ID",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "creditLimit": "Credit limit (USD)",
+        "creditHint": "Leave empty for no limit."
+      },
+      "contacts": {
+        "title": "Contacts",
+        "empty": "No contacts",
+        "add": "Add contact",
+        "remove": "Remove contact {n}",
+        "name": "Contact {n} name",
+        "role": "Contact {n} role",
+        "phone": "Contact {n} phone",
+        "email": "Contact {n} email"
+      }
+    },
+    "payTo": {
+      "title": "Pay to",
+      "none": "No bank details",
+      "pending": "Bank details change waiting for approval: payment is held",
+      "verified": "Supplier and bank details verified",
+      "unverified": "Supplier not verified: payment cannot be submitted"
+    },
+    "payments": {
+      "allocateAll": "Allocate the full payment amount to the supplier's invoices.",
+      "allocations": "Allocation to invoices",
+      "amount": "Amount",
+      "applyTitle": "Apply the unapplied amount",
+      "available": "Available balance {amount}",
+      "bankReference": "Bank reference",
+      "chooseParty": "Choose who paid to see their open invoices.",
+      "empty": "Nothing recorded yet",
+      "hasUnapplied": "This customer has {amount} of unapplied receipts.",
+      "method": "Method",
+      "noAllocations": "Not allocated",
+      "noOpenInvoices": "No open invoices",
+      "notFound": "This document does not exist or you do not have access to it.",
+      "searchPlaceholder": "Number, party or reference",
+      "tabsLabel": "Status",
+      "unapplied": "Unapplied",
+      "methods": {
+        "BANK_TRANSFER": "Bank transfer",
+        "CASH": "Cash",
+        "CHEQUE": "Cheque"
+      }
+    },
+    "route": {
+      "title": "Approval route",
+      "arOne": "Accountant or Finance Manager, then posting.",
+      "arCredit": "Accountant, then Finance Manager override for the credit limit.",
+      "apOne": "Accountant, or the department manager for their own department.",
+      "apTwo": "Accountant or department manager, then Finance Manager (above 5,000.00 USD)."
+    },
+    "settlements": {
+      "title": "Payments and credits",
+      "RECEIPT": "Receipt",
+      "PAYMENT": "Payment",
+      "CREDIT_NOTE": "Credit note"
+    },
+    "statement": {
+      "title": "Statement of account",
+      "date": "Date",
+      "type": "Type",
+      "number": "Number",
+      "description": "Description",
+      "debit": "Debit",
+      "credit": "Credit",
+      "balance": "Balance",
+      "opening": "Opening balance",
+      "closing": "Closing balance",
+      "types": {
+        "INVOICE": "Invoice",
+        "RECEIPT": "Receipt",
+        "PAYMENT": "Payment",
+        "CREDIT_NOTE": "Credit note"
+      }
+    },
+    "supplierPanel": {
+      "title": "Supplier",
+      "status": "Status",
+      "bankPending": "A bank-details change is waiting for approval.",
+      "notVerified": "The supplier is not verified yet: it can be invoiced but not paid."
+    },
+    "tabs": {
+      "details": "Details",
+      "preview": "Preview"
+    },
+    "tax": {
+      "title": "Tax Codes",
+      "description": "Tax codes with effective-dated rates, the accounts they post to and their verification status.",
+      "disclaimer": "Rates and codes in this demo are illustrative. They are not tax advice and must be confirmed by a qualified tax adviser before use.",
+      "new": "New tax code",
+      "notFound": "This tax code does not exist.",
+      "col": {
+        "code": "Code",
+        "name": "Name",
+        "kind": "Kind",
+        "method": "Method",
+        "rate": "Rate now",
+        "account": "Account",
+        "verification": "Verification",
+        "active": "Active"
+      },
+      "kind": {
+        "OUTPUT": "Output (sales)",
+        "INPUT": "Input (purchases)",
+        "EXEMPT": "No tax"
+      },
+      "method": {
+        "EXCLUSIVE": "Added to price",
+        "INCLUSIVE": "Included in price"
+      },
+      "form": {
+        "name": "Name (English)",
+        "nameKm": "Name (Khmer)",
+        "account": "Tax account",
+        "accountHint": "Output tax usually posts to a liability, input tax to an asset.",
+        "rate": "Rate (%)",
+        "from": "Effective from",
+        "active": "Active",
+        "reverifyHint": "Changing the method, kind, account or rate sets the code back to Unverified."
+      },
+      "rates": "Rate history",
+      "current": "In force",
+      "future": "Scheduled",
+      "range": "{from} to {to}",
+      "since": "From {from}",
+      "addRate": "Add rate",
+      "addRateHint": "The new rate must start after {date}; the current rate ends the day before. Posted documents keep the rate they were posted with.",
+      "rateAdded": "Rate added",
+      "saved": "Tax code saved",
+      "verify": "Record verification",
+      "verifyTitle": "Verify tax code {code}",
+      "verifyDescription": "Confirm that a qualified tax adviser has checked this code's rate, method and account.",
+      "verifyNote": "Who confirmed it and how",
+      "verifiedBy": "Verified by {name} on {date}: {note}",
+      "unverifiedNote": "Unverified: documents using this code cannot be posted."
+    },
+    "toast": {
+      "applied": "Applied",
+      "cancelled": "Cancelled",
+      "partySaved": "Saved",
+      "posted": "Posted",
+      "recalled": "Recalled to draft",
+      "saved": "Draft saved",
+      "submitted": "Submitted for approval"
+    },
+    "totals": {
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "tax": "Tax",
+      "total": "Total",
+      "outstanding": "Outstanding"
+    },
+    "voucher": {
+      "title": "RECEIPT VOUCHER",
+      "receivedFrom": "Received from",
+      "amount": "Amount",
+      "inWords": "In words",
+      "into": "Received into",
+      "invoice": "Invoice",
+      "applied": "Applied",
+      "unapplied": "Unapplied (customer credit)",
+      "receivedBy": "Received by",
+      "customer": "Customer",
+      "signature": "Signature and date",
+      "method": {
+        "BANK_TRANSFER": "Bank transfer",
+        "CASH": "Cash",
+        "CHEQUE": "Cheque"
+      }
+    }
+  },
+  "reports": {
+    "title": "Reports",
+    "description": "Run, view, print and export financial and control reports. Posted transactions only unless a report says otherwise.",
+    "search": "Find a report",
+    "none": "No reports are available for your role.",
+    "phase": "Available in Phase {phase}",
+    "category": {
+      "statements": "Financial statements",
+      "ledger": "Ledger",
+      "receivables": "Receivables",
+      "payables": "Payables",
+      "cash": "Cash and bank",
+      "analysis": "Revenue, expenses and FX",
+      "tax": "Tax",
+      "assets": "Assets and budgets",
+      "controls": "Controls"
+    },
+    "list": {
+      "balance-sheet": {
+        "title": "Balance Sheet",
+        "description": "Financial position at a date, with comparatives; checks that assets equal liabilities plus equity."
+      },
+      "income-statement": {
+        "title": "Income Statement",
+        "description": "Revenue, costs and profit for a period, by branch or department, with comparatives."
+      },
+      "cash-flow": {
+        "title": "Cash Flow Statement",
+        "description": "Cash movements by operating, investing and financing activities (indirect method)."
+      },
+      "changes-in-equity": {
+        "title": "Statement of Changes in Equity",
+        "description": "Opening equity, profit, contributions, distributions and closing equity."
+      },
+      "ratios": {
+        "title": "Financial Ratios and KPIs",
+        "description": "Liquidity, margins, gearing and collection days, with their formulas."
+      },
+      "trial-balance": {
+        "title": "Trial Balance",
+        "description": "Opening, movement and closing balance of every account."
+      },
+      "general-ledger": {
+        "title": "General Ledger",
+        "description": "Account activity with running balances."
+      },
+      "journal-entries": {
+        "title": "Journal Entry Report",
+        "description": "Journals with their lines for a period and status."
+      },
+      "ar-aging": {
+        "title": "Accounts Receivable Aging",
+        "description": "Customer balances by days past due."
+      },
+      "customer-balances": {
+        "title": "Customer Balances",
+        "description": "Balance by customer, agreed to the AR control account."
+      },
+      "outstanding-invoices": {
+        "title": "Outstanding Invoices",
+        "description": "Every open customer invoice with its due date and days past due."
+      },
+      "ap-aging": {
+        "title": "Accounts Payable Aging",
+        "description": "Supplier balances by days past due."
+      },
+      "supplier-balances": {
+        "title": "Supplier Balances",
+        "description": "Balance by supplier, agreed to the AP control account."
+      },
+      "outstanding-payables": {
+        "title": "Outstanding Payables",
+        "description": "Every open supplier invoice by due date, for payment planning."
+      },
+      "cashbook": {
+        "title": "Cashbook",
+        "description": "Opening, receipts, payments and closing for each cash account."
+      },
+      "bankbook": {
+        "title": "Bankbook",
+        "description": "Opening, receipts, payments and closing for each bank account."
+      },
+      "bank-reconciliation": {
+        "title": "Bank Reconciliation",
+        "description": "Statement balance, outstanding items, book balance and difference per reconciliation."
+      },
+      "revenue-by-period": {
+        "title": "Revenue by Period",
+        "description": "Revenue accounts by month or quarter."
+      },
+      "expenses-by-category": {
+        "title": "Expenses by Category",
+        "description": "Cost of sales, operating and other expenses by account."
+      },
+      "expenses-by-department": {
+        "title": "Expenses by Department",
+        "description": "Expenses for each department; department managers see their own."
+      },
+      "expenses-by-branch": {
+        "title": "Expenses by Branch",
+        "description": "Expenses for each branch."
+      },
+      "realised-fx": {
+        "title": "Realised FX Gain/Loss",
+        "description": "Exchange differences from settlements and transfers."
+      },
+      "unrealised-fx": {
+        "title": "Unrealised FX Gain/Loss",
+        "description": "Results of period-end revaluation."
+      },
+      "tax-summary": {
+        "title": "Tax Summary",
+        "description": "Taxable amounts and tax by code from posted documents, agreed to the tax accounts."
+      },
+      "fixed-asset-register": {
+        "title": "Fixed Asset Register",
+        "description": "Assets with cost, depreciation and net book value."
+      },
+      "depreciation-schedule": {
+        "title": "Depreciation Schedule",
+        "description": "Depreciation by asset and period."
+      },
+      "budget-vs-actual": {
+        "title": "Budget versus Actual",
+        "description": "Variance against the approved budget."
+      },
+      "subledger-reconciliation": {
+        "title": "Subledger-to-GL Reconciliation",
+        "description": "Customer, supplier, advances and cash subledgers against their control accounts."
+      },
+      "reopened-period-postings": {
+        "title": "Postings in Reopened Periods",
+        "description": "Journals posted while a period was reopened."
+      },
+      "self-approval-exceptions": {
+        "title": "Self-Approval Exceptions",
+        "description": "Documents approved by their own preparer (reduced separation-of-duties mode)."
+      },
+      "audit-trail": {
+        "title": "Audit Trail Report",
+        "description": "Audit events by user, entity and time."
+      }
+    },
+    "back": "All reports",
+    "print": "Print",
+    "run": "Run report",
+    "parameters": "Report parameters",
+    "params": {
+      "from": "From",
+      "to": "To",
+      "asOf": "As of",
+      "branch": "Branch",
+      "department": "Department",
+      "compare": "Compare with",
+      "group": "Group by",
+      "status": "Journal status",
+      "unposted": "Include unposted transactions"
+    },
+    "compare": {
+      "none": "No comparative",
+      "prior_period": "Prior period",
+      "prior_year": "Same period last year"
+    },
+    "group": {
+      "month": "Month",
+      "quarter": "Quarter"
+    },
+    "allBranches": "All branches",
+    "allDepartments": "All departments",
+    "asOf": "As of {date}",
+    "notFound": "This report is not available.",
+    "forbidden": "You do not have permission to run this report.",
+    "empty": "Nothing to report for these parameters.",
+    "line": "Line",
+    "formula": "Formula",
+    "expand": "Expand {label}",
+    "collapse": "Collapse {label}",
+    "checkOk": "Check passed",
+    "checkWarn": "Check needs attention"
+  },
+  "fa": {
+    "title": "Fixed Asset Register",
+    "description": "Assets with cost, depreciation and net book value; transfers and disposals with history.",
+    "new": "New asset",
+    "notFound": "This asset does not exist or you do not have access to it.",
+    "empty": "No assets yet",
+    "tabsLabel": "Asset status",
+    "allCategories": "All categories",
+    "searchPlaceholder": "Tag, name, location or custodian",
+    "saved": "Asset {tag} saved",
+    "lastPeriod": "Depreciated to",
+    "months": "{n} months",
+    "col": {
+      "tag": "Tag",
+      "name": "Name",
+      "category": "Category",
+      "acquired": "Acquired",
+      "cost": "Cost",
+      "accumulated": "Accumulated depreciation",
+      "nbv": "Net book value",
+      "status": "Status",
+      "department": "Department"
+    },
+    "form": {
+      "name": "Name (English)",
+      "nameKm": "Name (Khmer)",
+      "residual": "Residual value",
+      "life": "Useful life (months)",
+      "method": "Method",
+      "rate": "Annual rate (%)",
+      "convention": "Depreciation starts",
+      "inService": "In service",
+      "supplier": "Supplier",
+      "location": "Location",
+      "custodian": "Custodian",
+      "branch": "Branch",
+      "fundingTitle": "Recording the cost",
+      "funding": "Cost in the ledger",
+      "fundingAccount": "Paid from or owed to",
+      "broughtForward": "Depreciation brought forward",
+      "preview": "Depreciation preview",
+      "previewEmpty": "Enter cost, residual value and useful life to see the schedule.",
+      "previewText": "From {first}: {monthly} a month for {months} months, ending {last}; {year} in the first 12 months."
+    },
+    "method": {
+      "STRAIGHT_LINE": "Straight-line",
+      "DECLINING_BALANCE": "Declining balance"
+    },
+    "convention": {
+      "NEXT_MONTH": "The month after it goes into service",
+      "SAME_MONTH": "The month it goes into service"
+    },
+    "funding": {
+      "POST": "Post it now",
+      "ALREADY_POSTED": "Already in the ledger"
+    },
+    "fundingHint": {
+      "POST": "Posts Dr asset cost / Cr the account chosen, on the acquisition date.",
+      "ALREADY_POSTED": "For assets already recorded (for example at go-live); nothing is posted."
+    },
+    "source": {
+      "AP_INVOICE": "Supplier invoice",
+      "MANUAL": "Entered manually",
+      "OPENING": "Go-live register"
+    },
+    "actions": {
+      "activate": "Complete and activate",
+      "transfer": "Transfer",
+      "dispose": "Dispose",
+      "approveDisposal": "Approve disposal"
+    },
+    "banner": {
+      "draft": "Draft from a supplier invoice: check the category, useful life and location, then activate it. Its cost is already in the ledger.",
+      "fully": "Fully depreciated: no further depreciation is charged.",
+      "pending": "Disposal on {date} for {proceeds}, requested by {by}: {reason}. Waiting for approval.",
+      "disposedGain": "Disposed on {date} with a gain of {amount}. Journal:",
+      "disposedLoss": "Disposed on {date} with a loss of {amount}. Journal:"
+    },
+    "tabs": {
+      "details": "Details",
+      "schedule": "Depreciation schedule",
+      "history": "History"
+    },
+    "schedule": {
+      "period": "Month",
+      "opening": "Opening value",
+      "depreciation": "Depreciation",
+      "accumulated": "Accumulated",
+      "closing": "Closing value",
+      "state": "State"
+    },
+    "state": {
+      "POSTED": "Posted",
+      "BROUGHT_FORWARD": "Brought forward",
+      "PLANNED": "Planned"
+    },
+    "transfer": {
+      "title": "Transfer {tag}",
+      "description": "Moving to another branch or department reclassifies cost and depreciation between them.",
+      "date": "Transfer date",
+      "reason": "Reason"
+    },
+    "dispose": {
+      "title": "Dispose of {tag}",
+      "description": "Removes cost and accumulated depreciation and records the proceeds and the gain or loss.",
+      "date": "Disposal date",
+      "proceeds": "Proceeds",
+      "account": "Received into",
+      "reason": "Reason",
+      "previewGain": "Net book value {nbv}: a gain of {amount}, based on depreciation posted so far.",
+      "previewLoss": "Net book value {nbv}: a loss of {amount}, based on depreciation posted so far.",
+      "approvalNote": "Another user with approval rights posts the disposal.",
+      "submit": "Request disposal",
+      "approveTitle": "Approve and post the disposal of {tag}",
+      "rejectTitle": "Reject the disposal of {tag}"
+    },
+    "toast": {
+      "disposalRequested": "Disposal sent for approval",
+      "transferred": "Transferred"
+    },
+    "runs": {
+      "title": "Depreciation Runs",
+      "description": "Monthly depreciation: preview, approval by another user, then posting. An asset is depreciated once per month.",
+      "period": "Period",
+      "preview": "Preview run",
+      "empty": "No runs yet",
+      "number": "Number",
+      "assets": "Assets",
+      "total": "Total",
+      "journal": "Journal",
+      "notFound": "This run does not exist.",
+      "runTitle": "Depreciation {period}",
+      "previewLabel": "Preview",
+      "amount": "Depreciation",
+      "draftNote": "Preview: nothing is posted yet. A Finance Manager approves, then the run is posted.",
+      "postedNote": "Posted as {number}. Journal:",
+      "skipped": "Skipped, already posted for this month: {tags}",
+      "approveTitle": "Approve depreciation for {period}",
+      "rejectTitle": "Reject depreciation for {period}",
+      "postTitle": "Post depreciation for {period}",
+      "alreadyPosted": "Depreciation for {period} already posted"
+    }
+  },
+  "bud": {
+    "title": "Budgets",
+    "description": "Monthly budgets by account, department and branch, with versions and approval.",
+    "vsActual": "Budget versus actual",
+    "version": "Version",
+    "empty": "No budget yet",
+    "newVersion": "New version",
+    "newDescription": "A new draft, blank or copied from another version with an optional percentage change.",
+    "busy": "A version is already being prepared.",
+    "form": {
+      "name": "Name",
+      "reason": "Reason",
+      "copyFrom": "Start from",
+      "blank": "A blank budget",
+      "percent": "Change (%)",
+      "percentHint": "For example 5 or -10; applied to every month.",
+      "create": "Create version"
+    },
+    "toast": {
+      "created": "Version {version} created",
+      "saved": "Budget saved",
+      "submitted": "Budget submitted for approval"
+    },
+    "approvedBy": "approved by {name}",
+    "import": "Import lines",
+    "lockedApproved": "Approved versions are locked. Create a new version to revise it.",
+    "lockedSuperseded": "Superseded by a later approved version; kept for reference.",
+    "ownOnly": "You see and edit your own department's lines.",
+    "filterDepartment": "Department",
+    "totals": "Revenue {revenue} · Expenses {expense}",
+    "gridCaption": "Budget lines by month",
+    "gridNote": "Typing an annual total spreads it evenly across the months; December takes the rounding.",
+    "spreadHint": "Annual total: typing here spreads it evenly",
+    "addLine": "Add line",
+    "col": {
+      "account": "Account",
+      "department": "Department",
+      "branch": "Branch",
+      "total": "Year",
+      "net": "Total of the lines shown"
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    },
+    "aria": {
+      "account": "Account, line {n}",
+      "department": "Department, line {n}",
+      "branch": "Branch, line {n}",
+      "month": "{month}, line {n}",
+      "annual": "Annual total, line {n}",
+      "remove": "Remove line {n}"
+    },
+    "effect": "Revenue {revenue}; expenses {expense}",
+    "approveTitle": "Approve budget version {version}",
+    "approveDescription": "The previously approved version becomes superseded.",
+    "rejectTitle": "Reject budget version {version}",
+    "use": {
+      "title": "Budget use this year (expenses)",
+      "bar": "Budget used by {name}",
+      "detail": "{actual} of {budget}",
+      "note": "Posted expenses against the approved annual budget; managers are notified at 80 % and 100 %."
+    }
+  },
+  "fxr": {
+    "title": "FX Revaluation",
+    "description": "Revalue foreign-currency cash and bank balances at the period-end rate. Posted once per period, reversed on the first day of the next.",
+    "period": "Period",
+    "preview": "Preview",
+    "resultTitle": "Revaluation {period}",
+    "col": {
+      "account": "Account",
+      "balance": "Balance",
+      "rate": "Closing rate",
+      "booked": "Booked",
+      "revalued": "Revalued",
+      "difference": "Difference"
+    },
+    "netGain": "Net unrealised gain",
+    "netLoss": "Net unrealised loss",
+    "reversal": "Reversed automatically on {date}.",
+    "posted": "Posted:",
+    "notRevalued": "Not revalued in this release: {items}.",
+    "history": "Revaluations",
+    "empty": "No revaluations yet",
+    "postTitle": "Post the revaluation for {period}",
+    "postDescription": "Posts the differences to unrealised FX gain or loss and a reversal dated {date}.",
+    "alreadyPosted": "Revaluation for {period} already posted"
+  },
+  "inv": {
+    "title": "Inventory",
+    "description": "Accounting effects of inventory events from the stock system, and reconciliation of its valuation to the ledger.",
+    "recTitle": "Valuation against the ledger",
+    "valuation": "Valuation at {date}",
+    "control": "Inventory account 1300",
+    "difference": "Difference",
+    "agrees": "The valuation agrees with the ledger.",
+    "differs": "Difference of {amount} to investigate.",
+    "snapshot": "Valuation supplied at {date}",
+    "snapshotNote": "{method}; source: {source}",
+    "method": {
+      "WEIGHTED_AVERAGE": "Weighted average cost",
+      "FIFO": "First in, first out"
+    },
+    "formTitle": "Record an inventory event",
+    "send": "Post event",
+    "form": {
+      "source": "Source event id",
+      "sourceHint": "The same id is never posted twice.",
+      "type": "Type",
+      "date": "Date",
+      "item": "Item",
+      "quantity": "Quantity",
+      "value": "Value",
+      "reason": "Reason"
+    },
+    "types": {
+      "RECEIPT": "Receipt",
+      "ISSUE": "Issue / cost of sale",
+      "ADJUSTMENT": "Adjustment",
+      "WRITE_OFF": "Write-off",
+      "RETURN": "Return to supplier"
+    },
+    "duplicate": "Event {id} was already received; nothing new was posted ({journal}).",
+    "posted": "Posted as {journal}",
+    "events": "Events received",
+    "noEvents": "No events received yet",
+    "journal": "Journal"
+  },
+  "imp": {
+    "title": "Data Import",
+    "description": "Import master data, opening balances, journals and budgets: validate in full, preview, then commit everything or nothing.",
+    "new": "New import",
+    "history": "Import history",
+    "empty": "No imports yet",
+    "rollback": "Roll back",
+    "rowCounts": "{valid} of {total} valid, {errors} errors",
+    "col": {
+      "type": "Type",
+      "file": "File",
+      "rows": "Rows",
+      "status": "Status",
+      "by": "By",
+      "at": "At"
+    },
+    "openingNotSignedOff": "Opening balances not signed off: an imported opening journal is waiting for review.",
+    "signOff": "Sign off",
+    "toast": {
+      "rolledBack": "Import rolled back"
+    },
+    "wizardTitle": "New import",
+    "wizardTitleType": "Import: {type}",
+    "steps": "Import steps",
+    "step": {
+      "type": "Type",
+      "file": "Template and file",
+      "map": "Columns",
+      "preview": "Check",
+      "done": "Result"
+    },
+    "types": {
+      "CUSTOMERS": {
+        "title": "Customers",
+        "description": "Code, names, currency, terms, tax ID and credit limit."
+      },
+      "SUPPLIERS": {
+        "title": "Suppliers",
+        "description": "Code, names, currency, terms and tax ID. Imported suppliers start as drafts."
+      },
+      "ACCOUNTS": {
+        "title": "Chart of accounts",
+        "description": "New accounts under existing header accounts."
+      },
+      "OPENING_BALANCES": {
+        "title": "Opening balances",
+        "description": "One balanced draft opening journal, to be reviewed and signed off."
+      },
+      "JOURNALS": {
+        "title": "Journals",
+        "description": "Draft journals grouped by reference; every journal must balance."
+      },
+      "BUDGETS": {
+        "title": "Budget lines",
+        "description": "Monthly amounts by account and department into a draft budget version."
+      }
+    },
+    "bank": {
+      "title": "Bank statements",
+      "description": "Opens the statement import with saved column mappings."
+    },
+    "fileIntro": "Download the template, fill it in, save it as CSV (UTF-8) and upload it.",
+    "downloadTemplate": "Download template",
+    "back": "Back",
+    "columns": "Columns (* required): {columns}",
+    "target": "Load into",
+    "file": "File",
+    "fileHint": "CSV, up to {size} MB and 50,000 rows.",
+    "excelNote": "Excel files are read by the server in production; in this demo, save the sheet as CSV.",
+    "errors": {
+      "csvOnly": "Choose a .csv file",
+      "tooLarge": "The file is larger than {size} MB",
+      "noRows": "The file has no data rows"
+    },
+    "mapIntro": "{file}: {rows} rows. Match each template column to a column of your file.",
+    "notMapped": "Not in the file",
+    "missing": "Map the required columns: {columns}",
+    "validate": "Check the file",
+    "valid": "All {rows} rows are valid.",
+    "invalid": "{errors} errors in {rows} rows. Nothing can be imported until they are fixed.",
+    "errorsTitle": "Errors",
+    "err": {
+      "row": "Row",
+      "column": "Column",
+      "value": "Value",
+      "error": "Error"
+    },
+    "errorReport": "Download error report",
+    "previewTitle": "First rows",
+    "uploadAgain": "Upload a corrected file",
+    "commit": "Import",
+    "commitTitle": "Import {rows} rows",
+    "commitFinancial": "Creates drafts only; they are reviewed and posted through the normal approval.",
+    "commitMaster": "Creates the records now; the batch can be rolled back while nothing uses them.",
+    "financialNote": "Financial imports are all or nothing: one invalid row rejects the whole file.",
+    "committed": "{count, plural, one {# record created} other {# records created}}",
+    "another": "Import another file"
   }
 }

@@ -136,7 +136,7 @@ export const MENU: MenuGroup[] = [
   {
     id: "approvals", labelKey: "nav.groups.approvals", icon: "CheckSquare",
     visibility: row("— ● ● ● ○ ○ — — ● —"),
-    items: [item("approvals", "/approvals", 7, "SCR-26")],
+    items: [item("approvals", "/approvals", 2, "SCR-26")],
   },
   {
     id: "auditTrail", labelKey: "nav.groups.auditTrail", icon: "ScrollText",

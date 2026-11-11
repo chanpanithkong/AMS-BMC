@@ -163,7 +163,7 @@ describe("API client", () => {
 
   it("answers RATE_MISSING when no exchange rate exists for the date (BR-FX-002)", async () => {
     await signIn("acct");
-    expect((await orgApi.rateOn("KHR", "USD", "2027-03-31")).rate).toMatch(/^0\.0002\d{4}$/);
+    expect((await orgApi.rateOn("KHR", "USD", "2027-03-31")).rate).toMatch(/^0\.0002\d{8}$/);
     expect((await caught(orgApi.rateOn("KHR", "USD", "2028-01-01"))).code).toBe("RATE_MISSING");
   });
 });

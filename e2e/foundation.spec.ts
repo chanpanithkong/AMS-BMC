@@ -16,6 +16,8 @@ async function signInAs(page: Page, username: string, locale = "en") {
 }
 
 async function expectNoSeriousA11yIssues(page: Page) {
+  // Measure colours after transitions (e.g. a button fading from disabled to enabled) have finished.
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== "running"));
   const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
   const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
   expect(serious.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
@@ -123,7 +125,7 @@ test.describe("roles and navigation", () => {
     await expect(page).toHaveURL(/\/en\/login\?next=/);
     await page.getByTestId("demo-acct").click();
     await expect(page).toHaveURL(/\/en\/accounting\/journals$/);
-    await expect(page.getByTestId("coming-soon")).toContainText("Journal Entries");
+    await expect(page.getByRole("heading", { name: "Journal Entries" })).toBeVisible();
   });
 
   test("the header shows company, branch, search and unread notifications", async ({ page }) => {
@@ -250,7 +252,7 @@ test.describe("responsive @responsive", () => {
       await page.getByRole("button", { name: "Open menu" }).click();
       await page.getByRole("dialog").getByRole("button", { name: "Accounting" }).click();
       await page.getByRole("dialog").getByRole("link", { name: "Journal Entries" }).click();
-      await expect(page.getByTestId("coming-soon")).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Journal Entries" })).toBeVisible();
     } else {
       await expect(page.getByRole("navigation", { name: "Main navigation" })).toBeVisible();
     }

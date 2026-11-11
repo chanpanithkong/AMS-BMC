@@ -4,7 +4,14 @@ import type { AppNotification, Currency, Department, Dimension, ExchangeRate, Fi
 import type { PeriodStatus } from "@/lib/api/types/common";
 import { DEFAULT_ROLE_PERMISSIONS } from "@/lib/rbac/default-roles";
 import { ROLES, type RoleCode } from "@/lib/rbac/permissions";
-import { accountId, seedAccounts } from "./coa";
+import type { HistoryEvent } from "@/lib/api/types/common";
+import type { JournalEntry } from "@/lib/api/types/journals";
+import { seedAccounts } from "./coa";
+import { seedAdmin, type AdminState } from "./admin";
+import { seedAdvanced, type AdvancedState } from "./advanced";
+import { seedArAp, type ArApState } from "./arap";
+import { seedCashBank, type CashBankState } from "./cashbank";
+import { seedJournals } from "./journals";
 
 // Deterministic demo data (prompt §4). Phase 1 seeds organisation, users, chart of accounts,
 // currencies, rates and notifications; transaction data is added with each module's phase.
@@ -20,9 +27,22 @@ export interface MockUser extends SessionUser {
   company_ids: string[];
   failed_attempts: number;
   locked_until: number | null;
+  /** Value limit for approve and post actions, in base currency; null = no limit (FR-RBAC-006). */
+  approval_limit: string | null;
+  /** Roles as assigned (custom roles included); `roles` holds their base roles for checks and menus. */
+  assigned_roles: string[];
+  status: "ACTIVE" | "INACTIVE";
+  /** Empty = every branch of the user's companies (FR-RBAC-004). */
+  branch_ids: string[];
+  phone: string;
+  last_login_at: string | null;
+  /** A change of roles, scopes or limits waiting for the Owner (FR-RBAC-010). */
+  pending_access: import("@/lib/api/types/admin").AdminUser["pending"];
+  access_history: HistoryEvent[];
+  access_version: number;
 }
 
-export interface MockDb {
+export interface MockDb extends CashBankState, ArApState, AdvancedState, AdminState {
   companies: CompanyRef[];
   departments: Department[];
   fiscalYears: FiscalYear[];
@@ -32,6 +52,14 @@ export interface MockDb {
   dimensions: Dimension[];
   users: MockUser[];
   notifications: Record<string, AppNotification[]>;
+  journals: JournalEntry[];
+  /** Next number of the JV sequence (assigned at posting, FR-GL-008). */
+  journalSequence: number;
+  accountHistory: Record<string, HistoryEvent[]>;
+  /** Manual month-end checklist ticks: period id → item id → evidence. */
+  checklist: Record<string, Record<string, { evidence: string; by: string }>>;
+  /** Reduced separation-of-duties mode (SRS D-10); strict by default. */
+  reducedSod: boolean;
 }
 
 const BRANCHES: BranchRef[] = [
@@ -98,8 +126,8 @@ function seedRates(): ExchangeRate[] {
       from_currency: "KHR",
       to_currency: "USD",
       rate_type: "TRANSACTION",
-      // base (USD) units per one KHR, 8 decimals (SRS §6.16). Integer maths, no floats in the result.
-      rate: divideToFixed(1, khrPerUsd, 8),
+      // base (USD) units per one KHR, 12 decimals (D-P2-07). Integer maths, no floats in the result.
+      rate: divideToFixed(1, khrPerUsd, 12),
       source: "Illustrative — manual entry",
     });
   }
@@ -128,6 +156,9 @@ const USER_ROWS: [RoleCode, string, string, string][] = [
   ["READONLY", "readonly", "Ouk Chenda", "អ៊ុក ចិន្តា"],
 ];
 
+/** Illustrative approval and posting limits in base currency (SRS D-09 leaves the real values open). */
+const APPROVAL_LIMITS: Partial<Record<RoleCode, string | null>> = { OWNER: null, FINMGR: "50000", ACCT: "5000", DEPTMGR: "2000" };
+
 /** MFA is mandatory for these roles by default (SRS D-17). */
 const MFA_ROLES: RoleCode[] = ["OWNER", "FINMGR", "SYSADMIN"];
 
@@ -146,11 +177,21 @@ function seedUsers(): MockUser[] {
     mfa_enabled: MFA_ROLES.includes(role),
     default_company_id: COMPANY_ID,
     department_ids: role === "DEPTMGR" ? ["dep-OPS"] : [],
-    cash_account_ids: role === "CASHIER" ? [accountId("1101"), accountId("1103")] : [],
+    // Cash accounts in the cashier's custody (SRS §4.2 "own cash accounts").
+    cash_account_ids: role === "CASHIER" ? ["cba-cash-usd", "cba-petty"] : [],
     password: DEMO_PASSWORD,
     company_ids: [COMPANY_ID],
     failed_attempts: 0,
     locked_until: null,
+    approval_limit: APPROVAL_LIMITS[role] ?? "0",
+    assigned_roles: [role],
+    status: "ACTIVE" as const,
+    branch_ids: [],
+    phone: "",
+    last_login_at: null,
+    pending_access: null,
+    access_history: [],
+    access_version: 1,
   }));
 }
 
@@ -181,7 +222,47 @@ function seedNotifications(users: MockUser[]): Record<string, AppNotification[]>
 
 export function createDb(): MockDb {
   const users = seedUsers();
+  const accounts = seedAccounts();
+  const fiscalYear = seedFiscalYear();
+  const exchangeRates = seedRates();
+  const person = (username: string) => {
+    const user = users.find((u) => u.username === username)!;
+    return { id: user.id, name: user.full_name };
+  };
+  const { journals, nextSequence } = seedJournals(accounts, fiscalYear.periods, exchangeRates, {
+    acct: person("acct"), finmgr: person("finmgr"), owner: person("owner"),
+  });
+  const fullName = (username: string) => {
+    const p = person(username);
+    return { id: p.id, full_name: p.name };
+  };
+  const companyBase = { fiscalYears: [fiscalYear], accounts, journals, journalSequence: nextSequence };
+  const cashBank = seedCashBank(companyBase, {
+    acct: fullName("acct"), finmgr: fullName("finmgr"), cashier: fullName("cashier"), deptmgr: fullName("deptmgr"),
+  });
+  // Receivables and payables post after the cash and bank seed so that the seeded bank statements
+  // and reconciliations (to 31 March) are unchanged; their receipts and payments are dated April.
+  // The same store object, so that the journal sequence keeps counting.
+  const arap = seedArAp(Object.assign(companyBase, { sequences: cashBank.sequences, exchangeRates }), {
+    acct: fullName("acct"), finmgr: fullName("finmgr"), owner: fullName("owner"), aro: fullName("aro"), apo: fullName("apo"), deptmgr: fullName("deptmgr"),
+  });
+  // Fixed assets (with their depreciation runs), budgets and inventory, after the supplier invoices
+  // whose asset lines become assets.
+  const advanced = seedAdvanced(Object.assign(companyBase, { sequences: cashBank.sequences, invoices: arap.invoices }), {
+    acct: fullName("acct"), finmgr: fullName("finmgr"), owner: fullName("owner"),
+  });
+  // Roles, sessions, settings and the audit history of everything seeded above (Phase 7).
+  const admin = seedAdmin(users, journals);
   return {
+    ...cashBank,
+    ...arap,
+    ...advanced,
+    ...admin,
+    journals,
+    journalSequence: companyBase.journalSequence,
+    accountHistory: {},
+    checklist: {},
+    reducedSod: false,
     companies: [
       {
         id: COMPANY_ID, code: "DEMO", name: "Demo Trading Co., Ltd.", name_km: "ក្រុមហ៊ុន ដេម៉ូ ត្រេឌីង ឯ.ក",
@@ -191,14 +272,14 @@ export function createDb(): MockDb {
     departments: DEPARTMENTS.map(([code, name, name_km]) => ({
       id: `dep-${code}`, company_id: COMPANY_ID, code, name, name_km, is_active: true,
     })),
-    fiscalYears: [seedFiscalYear()],
-    accounts: seedAccounts(),
+    fiscalYears: [fiscalYear],
+    accounts,
     currencies: [
       { code: "USD", name: "US dollar", name_km: "ដុល្លារអាមេរិក", symbol: "$", decimals: 2, is_active: true },
       { code: "KHR", name: "Cambodian riel", name_km: "រៀល", symbol: "៛", decimals: 0, is_active: true },
       { code: "THB", name: "Thai baht", name_km: "បាតថៃ", symbol: "฿", decimals: 2, is_active: true },
     ],
-    exchangeRates: seedRates(),
+    exchangeRates,
     dimensions: [
       {
         id: "dim-project", code: "PROJECT", name: "Project", name_km: "គម្រោង",

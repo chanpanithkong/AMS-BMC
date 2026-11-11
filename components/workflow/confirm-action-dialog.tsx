@@ -2,7 +2,7 @@
 
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useId, useState } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -19,12 +19,12 @@ import { amountInWords } from "@/lib/money/words";
 
 export type CriticalAction =
   | "post" | "reverse" | "approve" | "reject" | "release" | "writeOff" | "complete" | "closePeriod" | "reopenPeriod"
-  | "yearEndClose" | "changeSetting";
+  | "yearEndClose" | "changeSetting" | "reopen";
 
 /** Actions for which the SRS asks for a reason (prompt §5). */
-const REASON_REQUIRED: CriticalAction[] = ["reverse", "reject", "reopenPeriod", "writeOff"];
+const REASON_REQUIRED: CriticalAction[] = ["reverse", "reject", "reopenPeriod", "reopen", "writeOff"];
 /** Server answers that mean "this was already done" — shown as information, not as an error. */
-const ALREADY_DONE_CODES = ["ALREADY_POSTED", "RECONCILIATION_COMPLETED"];
+const ALREADY_DONE_CODES = ["ALREADY_POSTED", "RECONCILIATION_COMPLETED", "ALREADY_RELEASED"];
 
 export interface FinancialEffect {
   company?: string;
@@ -61,6 +61,12 @@ interface ConfirmActionDialogProps {
   onConfirm: (input: { reason: string; idempotencyKey: string }) => Promise<string | void>;
   /** Called after success, or when the server says the action was already done. */
   onDone?: () => void;
+  /** Extra fields shown under the summary, e.g. the reversal date. */
+  children?: ReactNode;
+  /** Label of the reason field when the action needs one (e.g. "Comment" for a rejection). */
+  reasonLabel?: string;
+  /** False while extra fields (children) are incomplete. */
+  canConfirm?: boolean;
 }
 
 /**
@@ -70,6 +76,7 @@ interface ConfirmActionDialogProps {
  */
 export function ConfirmActionDialog({
   open, onOpenChange, action, title, description, effect, showAmountInWords, requireReason, thresholdAmount, onConfirm, onDone,
+  children, reasonLabel, canConfirm = true,
 }: ConfirmActionDialogProps) {
   const t = useTranslations();
   const locale = useAppLocale();
@@ -169,10 +176,12 @@ export function ConfirmActionDialog({
           )}
         </dl>
 
+        {children}
+
         {needsReason && (
           <div className="space-y-1.5">
             <label htmlFor={reasonId} className="text-sm font-medium">
-              {t("workflow.confirm.reason")} <span className="text-destructive" aria-hidden>*</span>
+              {reasonLabel ?? t("workflow.confirm.reason")} <span className="text-destructive" aria-hidden>*</span>
             </label>
             <Textarea
               id={reasonId}
@@ -213,7 +222,7 @@ export function ConfirmActionDialog({
           <Button
             variant={destructive ? "destructive" : "default"}
             onClick={run}
-            disabled={busy || (needsCheckbox && !confirmed)}
+            disabled={busy || !canConfirm || (needsCheckbox && !confirmed)}
             aria-busy={busy}
             data-testid="confirm-action"
           >

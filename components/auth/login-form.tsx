@@ -66,6 +66,9 @@ export function LoginForm() {
     form.reset({ username: "", password: "" });
     otpForm.reset({ otp: "" });
     setCredentials(null);
+    // Next.js may show this same instance to the next person who signs in.
+    setStep("credentials");
+    setAlert(null);
   };
 
   const fail = (error: unknown) => {

@@ -53,10 +53,12 @@ describe("allocation limits", () => {
 
 describe("realised FX preview", () => {
   it("shows a gain when the settlement rate is better (SRS 6.16 illustration)", () => {
-    // KHR 4,100,000 invoiced at 4,100 KHR/USD and paid at 4,000 KHR/USD.
-    // The 8-decimal stored rate values the invoice at 999.99, so the preview is 25.01 rather than 25.00.
-    const gain = realisedFxPreview("4100000", "0.00024390", "0.00025", "USD");
-    expect(gain.toFixed(2)).toBe("25.01");
+    // KHR 4,100,000 invoiced at 4,100 KHR/USD and paid at 4,000 KHR/USD: gain 25.00 USD, as in the SRS.
+    // With 12-decimal rates (D-P2-07) the invoice is valued at exactly 1,000.00.
+    const gain = realisedFxPreview("4100000", "0.000243902439", "0.00025", "USD");
+    expect(gain.toFixed(2)).toBe("25.00");
+    // An 8-decimal rate (the SRS proposal) would have shown 25.01.
+    expect(realisedFxPreview("4100000", "0.00024390", "0.00025", "USD").toFixed(2)).toBe("25.01");
   });
 
   it("is zero when the rate did not change", () => {

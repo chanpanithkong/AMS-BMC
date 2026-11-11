@@ -4,7 +4,7 @@ Web user interface of the Accounting Management System described in `docs/AMS-SR
 It is bilingual (English / Khmer) and multi-currency (USD, KHR and others). The backend is a separate FastAPI
 service at `/api/v1`; this repository contains the front end and a mock backend for demos and tests.
 
-**Status: Phase 1 (Foundation) of 7.** See `docs/SCREEN_MAP.md` for what is built and `docs/DECISIONS.md` for
+**Status: Phases 1 to 6 (Foundation; General Ledger; Cash, Bank and Expenses; Receivables, Payables and Tax; Reporting and Dashboard; Fixed Assets, Budgets, FX Revaluation, Inventory and Imports) of 7.** See `docs/SCREEN_MAP.md` for what is built and `docs/DECISIONS.md` for
 assumptions. No legal, tax or accounting-framework compliance is claimed.
 
 ## Run it

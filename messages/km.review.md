@@ -88,3 +88,83 @@ SRS Appendix C gives English names only; the Khmer names were written for the de
 
 The remaining account names (rent, utilities, salaries, travel, bank charges, interest, and so on) use everyday
 terms; see the file for the full list.
+
+## Phase 2 terms (General Ledger)
+
+| Key | English | Khmer used | // REVIEW |
+|---|---|---|---|
+| `gl.type.ADJUSTING` | Adjusting | កែតម្រូវ | |
+| `gl.type.OPENING` | Opening balance | សមតុល្យដើមគ្រា | |
+| `gl.accounts.header` | Header (account) | មេ | "គណនីមេ" for header account |
+| `gl.accounts.col.normal` | Normal balance | សមតុល្យធម្មតា | |
+| `gl.accounts.form.control` | Control account | គណនីត្រួតពិនិត្យ | |
+| `gl.accounts.form.mapping` | Statement mapping | ការផ្គូផ្គងរបាយការណ៍ | |
+| `gl.accounts.cashFlowClass.*` | Operating / Investing / Financing | ប្រតិបត្តិការ / វិនិយោគ / ហិរញ្ញប្បទាន | |
+| `gl.journal.fields.postingDate` | Posting date | កាលបរិច្ឆេទកត់ត្រា | |
+| `gl.journal.actions.post` | Post | កត់ត្រាចូលបញ្ជី | |
+| `gl.journal.actions.reverse` | Reverse | បង្វិលត្រឡប់ | |
+| `gl.journal.actions.recall` | Recall | ទាញយកមកវិញ | |
+| `gl.journal.actions.delegate` | Delegate | ផ្ទេរសិទ្ធិ | |
+| `gl.journal.voucher.title` | Journal voucher | ប័ណ្ណទិនានុប្បវត្តិ | |
+| `gl.tb.col.opening` / `closing` | Opening / Closing | ដើមគ្រា / ចុងគ្រា | |
+| `gl.periods.actions.softClose` | Soft-close | បិទបណ្តោះអាសន្ន | |
+| `gl.periods.checklist.title` | Month-end checklist | បញ្ជីត្រួតពិនិត្យចុងខែ | |
+| `gl.periods.actions.yearEnd` | Year-end close | បិទបញ្ជីចុងឆ្នាំ | |
+| `gl.rates.type.CLOSING` | Closing rate | ចុងគ្រា | Alternative: អត្រាបិទបញ្ជី |
+| Checklist tasks (`mocks/handlers/periods.ts`) | e.g. "Clear the suspense account" | សម្អាតគណនីបណ្តោះអាសន្ន | Demo text written in the mock |
+
+## Phase 3 terms (Cash, Bank and Expenses)
+
+| Key | English | Khmer used | // REVIEW |
+|---|---|---|---|
+| `cb.type.DEPOSIT` / `WITHDRAWAL` | Deposit / Withdrawal | ការដាក់ប្រាក់ / ការដកប្រាក់ | |
+| `cb.type.CHARGE` | Bank charge | កម្រៃសេវាធនាគារ | |
+| `cb.book.cashbook` / `bankbook` | Cashbook / Bankbook | សៀវភៅសាច់ប្រាក់ / សៀវភៅធនាគារ | |
+| `cb.rec.summary.outstandingDeposits` | Outstanding deposits | ប្រាក់បញ្ញើមិនទាន់ឆ្លុះបញ្ចាំង | "deposits in transit" |
+| `cb.rec.summary.unpresentedPayments` | Unpresented payments | ការទូទាត់មិនទាន់ឆ្លុះបញ្ចាំង | |
+| `cb.rec.summary.adjustedBank` | Adjusted bank balance | សមតុល្យធនាគារបន្ទាប់ពីកែតម្រូវ | |
+| `cb.import.status.DUPLICATE` | Duplicate | ស្ទួន | |
+| `cb.tx.voucher.PAYMENT` / `RECEIPT` | Payment / Receipt voucher | ប័ណ្ណចំណាយប្រាក់ / ប័ណ្ណទទួលប្រាក់ | |
+| `exp.mode.UNPAID` | Not yet paid | មិនទាន់ទូទាត់ | |
+| `exp.mode.CLAIM` | Employee claim | សំណើរបស់បុគ្គលិក | Alternative: ការទាមទារសំណងរបស់បុគ្គលិក |
+| `exp.alloc.title` | Allocation | ការបែងចែក | |
+| Seeded account names (`mocks/db/cashbank.ts`) | e.g. "Main cash – USD" | សាច់ប្រាក់មេ – ដុល្លារ | Demo data |
+
+## Phase 4 — receivables, payables and tax codes
+
+Terms to confirm with a native-speaking accountant:
+
+| English | Khmer used | Note |
+| --- | --- | --- |
+| Credit note | កំណត់ត្រាឥណទាន | Some firms use «ប័ណ្ណឥណទាន». |
+| Aging | អាយុកាលបំណុល | |
+| Unapplied receipt | បង្កាន់ដៃមិនទាន់កាត់កង | |
+| Release (a payment) | បញ្ចេញការទូទាត់ | |
+| Output tax / Input tax | ពន្ធធាតុចេញ / ពន្ធធាតុចូល | Consistent with the chart of accounts. |
+| Tax invoice | វិក្កយបត្រ | The demo invoice layout is illustrative only. |
+| Demo customer and supplier names | e.g. «សណ្ឋាគារ អង្គរ» | Generated from word lists (type + place); not checked for natural phrasing. |
+
+## Phase 5 — reports and dashboard
+
+| English | Khmer used | Note |
+| --- | --- | --- |
+| Balance Sheet | តារាងតុល្យការ | |
+| Income Statement | របាយការណ៍លទ្ធផល | Also «របាយការណ៍ចំណេញខាត». |
+| Cash Flow Statement | របាយការណ៍លំហូរសាច់ប្រាក់ | |
+| Current-year earnings | ចំណេញឆ្នាំបច្ចុប្បន្ន | |
+| Subledger | បញ្ជីរង | |
+| Days sales outstanding | ចំនួនថ្ងៃប្រមូលបំណុល | |
+| Pending (dashboard badge) | កំពុងរង់ចាំ / រួមបញ្ចូលការរង់ចាំ | |
+
+## Phase 6 — fixed assets, budgets, FX revaluation, inventory, imports
+
+| English | Khmer used | Note |
+| --- | --- | --- |
+| Net book value | តម្លៃសុទ្ធតាមបញ្ជី | |
+| Accumulated depreciation | រំលស់បង្គរ | Same as the chart of accounts. |
+| Straight-line / declining balance | បន្ទាត់ត្រង់ / សមតុល្យថយចុះ | |
+| Dispose (of an asset) | លក់ចេញ / បោះបង់ | Covers both sale and scrapping; confirm a single term. |
+| Superseded (budget version) | ត្រូវបានជំនួស | |
+| Revaluation | ការវាយតម្លៃឡើងវិញ | |
+| Weighted average cost | ថ្លៃដើមមធ្យមភាគទម្ងន់ | |
+| Sign off (opening balances) | ចុះហត្ថលេខា | |

@@ -28,7 +28,8 @@ export const DEFAULT_ROLE_PERMISSIONS: Record<RoleCode, Permission[]> = {
   FINMGR: [
     ...VIEW_ALL, "org.manage", "org.periods.manage", "coa.create", "coa.edit", "coa.approve",
     "coa.sensitive.view", "gl.journal.create", "gl.journal.edit", "gl.journal.submit", "gl.journal.approve",
-    "gl.journal.post", "gl.journal.reverse", "gl.journal.export", "ar.invoice.approve", "ar.invoice.post",
+    "gl.journal.post", "gl.journal.reverse", "gl.journal.export", "gl.journal.adjust", "ar.invoice.approve",
+    "ar.invoice.post",
     "ar.receipt.post", "ar.credit_note.approve", "ar.credit_note.post", "ar.writeoff.approve",
     "ap.supplier.approve", "ap.supplier.bank.view", "ap.invoice.approve", "ap.invoice.post",
     "ap.payment.approve", "ap.payment.release", "ap.payment.reverse", "cb.bank.unmask", "cb.cash.post",
@@ -39,8 +40,8 @@ export const DEFAULT_ROLE_PERMISSIONS: Record<RoleCode, Permission[]> = {
   ],
   ACCT: [
     "dash.view", "org.view", "coa.view", "coa.create", "coa.edit", "gl.journal.view", "gl.journal.create",
-    "gl.journal.edit", "gl.journal.delete", "gl.journal.submit", "gl.journal.post", "gl.journal.export",
-    "ar.customer.view", "ar.customer.manage", "ar.invoice.view", "ar.invoice.create", "ar.invoice.edit",
+    "gl.journal.edit", "gl.journal.delete", "gl.journal.submit", "gl.journal.approve", "gl.journal.post",
+    "gl.journal.export", "ar.customer.view", "ar.customer.manage", "ar.invoice.view", "ar.invoice.create", "ar.invoice.edit",
     "ar.invoice.approve", "ar.invoice.post", "ar.receipt.view", "ar.receipt.create", "ar.receipt.post",
     "ar.receipt.allocate", "ar.credit_note.view", "ar.credit_note.create", "ar.credit_note.submit",
     "ap.supplier.view", "ap.supplier.manage", "ap.invoice.view", "ap.invoice.create", "ap.invoice.edit",
@@ -91,7 +92,7 @@ export const DEFAULT_ROLE_PERMISSIONS: Record<RoleCode, Permission[]> = {
 /** Actions that change records. Used to check that read-only roles hold none of them. */
 export const MUTATING_ACTIONS = [
   "create", "edit", "delete", "submit", "approve", "post", "reverse", "release", "manage", "complete",
-  "reopen", "allocate", "import", "revalue", "close", "request",
+  "reopen", "allocate", "import", "revalue", "close", "request", "adjust", "override",
 ];
 
 export function isMutatingPermission(code: string): boolean {

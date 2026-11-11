@@ -8,6 +8,13 @@ export { Decimal };
 
 export type AmountLike = string | Decimal | null | undefined;
 
+/**
+ * Decimals kept for exchange rates (base units per one transaction unit). SRS BR-FX-005 proposes 8;
+ * 12 is used so that a rate quoted the other way round (4,105 KHR per USD) reads back exactly.
+ * See docs/DECISIONS.md D-P2-07.
+ */
+export const RATE_DECIMALS = 12;
+
 const DEFAULT_DECIMALS: Record<string, number> = { USD: 2, KHR: 0, JPY: 0, VND: 0, EUR: 2, THB: 2, CNY: 2 };
 const decimalsOverride: Record<string, number> = {};
 

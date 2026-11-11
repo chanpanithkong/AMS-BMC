@@ -25,6 +25,8 @@ export interface RequestOptions {
   signal?: AbortSignal;
   /** Skip the Authorization header (public endpoints). */
   anonymous?: boolean;
+  /** Read the body as a Blob (file downloads) instead of JSON. */
+  responseType?: "json" | "blob";
   /** Internal: this request already went through one token refresh. */
   retried?: boolean;
 }
@@ -117,6 +119,7 @@ export async function apiFetch<T>(path: string, options: RequestOptions = {}): P
 
   if (response.ok) {
     if (response.status === 204) return undefined as T;
+    if (options.responseType === "blob") return (await response.blob()) as T;
     return (await response.json()) as T;
   }
 
@@ -148,6 +151,8 @@ export const api = {
     apiFetch<T>(path, { ...options, method: "POST", body }),
   patch: <T>(path: string, body: unknown, version?: number, options: Omit<RequestOptions, "method" | "body"> = {}) =>
     apiFetch<T>(path, { ...options, method: "PATCH", body, ifMatch: version }),
+  put: <T>(path: string, body: unknown, version?: number, options: Omit<RequestOptions, "method" | "body"> = {}) =>
+    apiFetch<T>(path, { ...options, method: "PUT", body, ifMatch: version }),
   delete: <T = void>(path: string, options: Omit<RequestOptions, "method"> = {}) =>
     apiFetch<T>(path, { ...options, method: "DELETE" }),
 };

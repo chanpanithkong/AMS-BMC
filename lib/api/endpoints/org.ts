@@ -12,6 +12,8 @@ export const orgApi = {
   dimensions: () => api.list<Dimension>("/dimensions"),
   exchangeRates: (query: { from?: string; to?: string; date_from?: string; date_to?: string; rate_type?: string; cursor?: string | null; limit?: number }) =>
     api.list<ExchangeRate>("/exchange-rates", query),
+  createRate: (rate: Omit<ExchangeRate, "id" | "to_currency"> & { to_currency?: string }) =>
+    api.post<ExchangeRate>("/exchange-rates", rate),
   /** Rate for one date; 422 RATE_MISSING when none exists (BR-FX-002). ASSUMPTION: lookup endpoint. */
   rateOn: (from: string, to: string, date: string) =>
     api.get<ExchangeRate>("/exchange-rates/lookup", { from, to, date }),

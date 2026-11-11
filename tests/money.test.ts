@@ -31,7 +31,8 @@ describe("decimal helpers", () => {
   });
 
   it("converts to base with base-per-unit rates (SRS 6.16)", () => {
-    expect(toBase("4100000", "0.00024390", "USD").toFixed(2)).toBe("999.99");
+    expect(toBase("4100000", "0.00024390", "USD").toFixed(2)).toBe("999.99"); // an 8-decimal rate loses a cent
+    expect(toBase("4100000", "0.000243902439", "USD").toFixed(2)).toBe("1000.00"); // 12 decimals (D-P2-07)
     expect(toBase("4000000", "0.00025", "USD").toFixed(2)).toBe("1000.00");
     expect(inverseRate("0.00025", 2)?.toFixed(2)).toBe("4000.00");
     expect(inverseRate("0")).toBeNull();
@@ -79,8 +80,9 @@ describe("formatting", () => {
     expect(formatDecimal("-0.001", 2)).toBe("0.00");
   });
 
-  it("formats rates with up to 8 decimals", () => {
+  it("formats rates with up to 12 decimals", () => {
     expect(formatRate("0.00024390")).toBe("0.0002439");
+    expect(formatRate("0.000243605359")).toBe("0.000243605359");
     expect(formatRate("4100")).toBe("4,100.00");
   });
 });

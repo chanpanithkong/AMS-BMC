@@ -11,6 +11,7 @@ import { formatDate, todayBusinessDate } from "@/lib/format/dates";
 import { AppLink, useAppLocale } from "@/lib/i18n/navigation";
 import { useAccessContext } from "@/lib/rbac/can";
 import { visibleMenu } from "@/lib/rbac/menu";
+import { DashboardWidgets } from "@/components/dashboard/widgets";
 import { useLocalName } from "./switchers";
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
@@ -23,8 +24,8 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
 }
 
 /**
- * Phase 1 landing page. The KPI dashboard (SCR-02) is delivered in Phase 5; until then this page
- * confirms who is signed in, the company context and what the role can reach.
+ * SCR-02 dashboard: role-specific widgets (SRS §6.19), then who is signed in, the company context,
+ * what the role can reach and the period status.
  */
 export function DashboardHome() {
   const t = useTranslations();
@@ -45,7 +46,7 @@ export function DashboardHome() {
         title={t("dashboard.welcome", { name: locale === "km" ? user.full_name_km : user.full_name })}
         description={t("dashboard.signedInAs", { role: user.roles.map((r) => t(`roles.${r}`)).join(", ") })}
       />
-      <p className="mb-4 rounded-lg border border-info/30 bg-info/5 p-3 text-sm">{t("dashboard.phaseNote")}</p>
+      <DashboardWidgets />
       <div className="grid gap-4 lg:grid-cols-3">
         <Card title={t("dashboard.company")}>
           <dl className="space-y-2 text-sm">

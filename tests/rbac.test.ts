@@ -121,7 +121,10 @@ describe("default role permissions (SRS 4.2 and 4.3)", () => {
 
   it("separates preparing from approving and releasing", () => {
     expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.ACCT, "gl.journal.create")).toBe(true);
-    expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.ACCT, "gl.journal.approve")).toBe(false);
+    // ACCT may approve other people's journals within a limit (SRS 4.2); never their own (BR-SEC-002).
+    expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.ACCT, "gl.journal.approve")).toBe(true);
+    expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.ACCT, "gl.journal.reverse")).toBe(false);
+    expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.ACCT, "gl.journal.adjust")).toBe(false);
     expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.APO, "ap.payment.create")).toBe(true);
     expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.APO, "ap.payment.approve")).toBe(false);
     expect(hasPermission(DEFAULT_ROLE_PERMISSIONS.APO, "ap.payment.release")).toBe(false);

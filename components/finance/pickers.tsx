@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useCurrencies, useFiscalYears } from "@/lib/api/hooks";
 import type { AccountingPeriod } from "@/lib/api/types/org";
 import { useAppLocale } from "@/lib/i18n/navigation";
-import { D, Decimal, inverseRate, parseAmountInput } from "@/lib/money/decimal";
+import { D, Decimal, RATE_DECIMALS, inverseRate, parseAmountInput } from "@/lib/money/decimal";
 import { formatDecimal, formatRate } from "@/lib/money/format";
 import { cn } from "@/lib/utils";
 
@@ -50,23 +50,25 @@ export function CurrencySelect({ value, onChange, disabled, id, className, ...ar
 }
 
 interface RateInputProps {
-  /** Base units per one unit of the transaction currency, up to 8 decimals (SRS §6.16). */
+  /** Base units per one unit of the transaction currency, up to RATE_DECIMALS decimals (SRS §6.16). */
   value: string;
   onChange: (rate: string) => void;
   currency: string;
   baseCurrency: string;
   disabled?: boolean;
   id?: string;
+  /** Start in the inverse direction ("4,100 KHR per 1 USD") while the field is empty. */
+  defaultInverse?: boolean;
 }
 
 /**
  * Exchange-rate entry. The rate is stored as base per transaction-currency unit, but for a pair like
  * KHR→USD people think "4,100 KHR per USD", so the field can be switched to the inverse direction.
  */
-export function RateInput({ value, onChange, currency, baseCurrency, disabled, id }: RateInputProps) {
+export function RateInput({ value, onChange, currency, baseCurrency, disabled, id, defaultInverse }: RateInputProps) {
   const t = useTranslations("finance.rate");
   // Small stored rates (0.00024390) read better as their inverse.
-  const [inverse, setInverse] = useState(() => D(value).gt(0) && D(value).lt(1));
+  const [inverse, setInverse] = useState(() => (D(value).gt(0) ? D(value).lt(1) : Boolean(defaultInverse)));
   const [draft, setDraft] = useState<string | null>(null);
   const [invalid, setInvalid] = useState(false);
 
@@ -84,7 +86,7 @@ export function RateInput({ value, onChange, currency, baseCurrency, disabled, i
     setInvalid(false);
     if (parsed === "") return onChange("");
     const direct = inverse ? new Decimal(1).div(parsed) : new Decimal(parsed);
-    onChange(direct.toDecimalPlaces(8).toFixed());
+    onChange(direct.toDecimalPlaces(RATE_DECIMALS).toFixed());
   };
 
   return (

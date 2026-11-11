@@ -1,4 +1,4 @@
-import { D, currencyDecimals, type AmountLike } from "./decimal";
+import { D, RATE_DECIMALS, currencyDecimals, type AmountLike } from "./decimal";
 
 export type NegativeStyle = "brackets" | "minus";
 
@@ -31,9 +31,9 @@ export function formatAmount(value: AmountLike, currency: string, opts: FormatAm
   return opts.withCode ? `${text} ${currency}` : text;
 }
 
-/** Format an exchange rate: up to 8 decimals (SRS BR-FX-005), trailing zeros trimmed to at least 2. */
+/** Format an exchange rate: up to RATE_DECIMALS decimals, trailing zeros trimmed to at least 2. */
 export function formatRate(rate: AmountLike): string {
-  const fixed = D(rate).toFixed(8);
+  const fixed = D(rate).toFixed(RATE_DECIMALS);
   const trimmed = fixed.replace(/0+$/, "");
   const [intPart, fraction = ""] = trimmed.split(".");
   return groupThousands(intPart) + "." + fraction.padEnd(2, "0");

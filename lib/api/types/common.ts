@@ -24,7 +24,8 @@ export type InvoiceStatus = DocumentStatus | "OPEN" | "PARTIALLY_PAID" | "PAID" 
 export type ReconciliationStatus = "IN_PROGRESS" | "COMPLETED";
 export type PeriodStatus = "OPEN" | "SOFT_CLOSED" | "CLOSED" | "REOPENED";
 export type VerificationStatus = "VERIFIED" | "UNVERIFIED";
-export type AnyStatus = InvoiceStatus | ReconciliationStatus | PeriodStatus | VerificationStatus | "ACTIVE" | "INACTIVE" | "PENDING";
+export type AnyStatus = InvoiceStatus | ReconciliationStatus | PeriodStatus | VerificationStatus | "ACTIVE" | "INACTIVE" | "PENDING" | "BLOCKED"
+  | "FULLY_DEPRECIATED" | "DISPOSAL_PENDING" | "DISPOSED" | "SUPERSEDED" | "FAILED" | "VALIDATED" | "COMMITTED" | "ROLLED_BACK";
 
 export interface HistoryEvent {
   id: string;

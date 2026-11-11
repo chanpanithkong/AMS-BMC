@@ -20,6 +20,8 @@ export interface AccountingPeriod {
   start_date: IsoDate;
   end_date: IsoDate;
   status: PeriodStatus;
+  /** Present while a reopen request is waiting for, or has had, a decision (BR-CLS-003). */
+  reopen_request?: import("./reports").ReopenRequest | null;
 }
 
 export interface FiscalYear {
@@ -48,7 +50,7 @@ export interface ExchangeRate {
   from_currency: string;
   to_currency: string;
   rate_type: "TRANSACTION" | "CLOSING" | "AVERAGE";
-  /** `to_currency` units per one `from_currency` unit, up to 8 decimals. */
+  /** `to_currency` units per one `from_currency` unit, up to 12 decimals (docs/DECISIONS.md D-P2-07). */
   rate: Money;
   source: string;
 }

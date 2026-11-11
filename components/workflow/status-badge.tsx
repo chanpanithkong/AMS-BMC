@@ -41,6 +41,15 @@ const STATUS: Record<AnyStatus, { tone: Tone; icon: LucideIcon }> = {
   ACTIVE: { tone: "success", icon: CheckCircle2 },
   INACTIVE: { tone: "neutral", icon: Ban },
   PENDING: { tone: "warning", icon: Clock },
+  BLOCKED: { tone: "danger", icon: Ban },
+  FULLY_DEPRECIATED: { tone: "neutral", icon: CheckCircle2 },
+  DISPOSAL_PENDING: { tone: "warning", icon: Clock },
+  DISPOSED: { tone: "neutral", icon: Ban },
+  SUPERSEDED: { tone: "neutral", icon: RotateCcw },
+  FAILED: { tone: "danger", icon: XCircle },
+  VALIDATED: { tone: "info", icon: CheckCircle2 },
+  COMMITTED: { tone: "success", icon: Lock },
+  ROLLED_BACK: { tone: "warning", icon: RotateCcw },
 };
 
 interface StatusBadgeProps {

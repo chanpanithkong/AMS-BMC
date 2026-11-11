@@ -29,7 +29,10 @@ export function useUrlFilters<K extends string>(keys: readonly K[]) {
 
   const setFilters = useCallback(
     (patch: Partial<Record<K, string | null>>) => {
-      const next = new URLSearchParams(serialised);
+      // Read the URL at call time, not from this render: a debounced search may fire after another
+      // filter changed, or after the user has already left the page.
+      if (typeof window !== "undefined" && window.location.pathname !== pathname) return;
+      const next = new URLSearchParams(typeof window !== "undefined" ? window.location.search : serialised);
       for (const [key, value] of Object.entries(patch) as [K, string | null][]) {
         if (value === null || value === "") next.delete(key);
         else next.set(key, value);
